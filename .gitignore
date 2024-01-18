@@ -1,0 +1,44 @@
+# ignore everything in the root except this file and exceptions:
+/*
+!.gitignore
+!wp-content/
+!lc-modules/
+!css/
+!js/
+!vite/
+!acf.json
+
+# ignore everything in the "wp-content" directory, except:
+# "mu-plugins", themes" directory
+wp-content/*
+!wp-content/mu-plugins/
+!wp-content/themes/
+
+# ignore these plugins
+wp-content/plugins/
+
+# ignore specific themes
+wp-content/themes/twenty*/
+
+# ignore node dependency directories
+node_modules/
+
+# ignore log files and databases
+*.log
+*.sql
+*.sqlite
+
+# ignora arquivos de teste
+*_old*
+*.bkp
+*bkp*
+*teste.php
+
+# ignora os arquivos que não são relevantes
+wp-content/themes/mapacolaborativo-1.0/_tmp
+wp-content/themes/mapacolaborativo-1.0/.settings
+wp-content/themes/mapacolaborativo-1.0/fonts--
+wp-content/themes/mapacolaborativo-1.0/images*
+wp-content/themes/mapacolaborativo-1.0/uploads
+wp-content/themes/mapacolaborativo-1.0/webfonts
+
