@@ -51,17 +51,6 @@
 	</footer>
 	<?php wp_footer(); ?>
 	
-	<script type="text/javascript">
-		jQuery(document).ready(function() {
-			var userBrowser = jQuery.browser;
-			if (userBrowser.msie) {
-				var userBrowserVersion = userBrowser.version;
-				if (userBrowserVersion == "7.0" || userBrowserVersion == "6.0") {
-					jQuery('#asn-warning').css('display', 'block');
-				}
-			}
-		});
-	</script>
 	<script type="text/javascript"> 
 //		var $buoop = {vs:{i:7,f:15,o:10.6,s:4,n:9}}
 //		$buoop.ol = window.onload; 
