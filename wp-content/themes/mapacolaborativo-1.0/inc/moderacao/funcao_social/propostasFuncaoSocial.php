@@ -224,25 +224,6 @@ function funcaosocial1_tabelaPropostas($tipo) {
         } ?>
 		<div class="MCPRnester">
             <div class="MCPRcolum">
-    			<div class="MCPRidcell">
-                                <p class="MCPRh6">Autor</p>
-    			</div>
-    			<div class="MCPRcontentcell">
-                                <p class="MCPRh5"><?php echo $colaboracao->usuario->nome; ?></p>
-    			</div>
-    			
-    			<div class="MCPRidcell">
-                                <p class="MCPRh6">E-mail do autor</p>
-    			</div>
-    			<div class="MCPRcontentcell">
-                                <p class="MCPRh5"><?php echo $colaboracao->usuario->email; ?></p>
-    			</div>
-    			<div class="MCPRidcell">
-                                <p class="MCPRh6">Endereço do autor</p>
-    			</div>
-    			<div class="MCPRcontentcell">
-                                <p class="MCPRh5"> <?php echo $colaboracao->usuario->endereco; ?> <br><?php echo $colaboracao->usuario->cep; ?></p>
-    			</div>
                 <div class="MCPRcoldois">
                     <div class="MCPRidcell">
                         <p class="MCPRh6">Endereço</p>

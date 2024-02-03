@@ -34,7 +34,6 @@ class AprovacaoColabImovelDAO extends AprovacaoDAO {
             SELECT DISTINCT * FROM(SELECT
             DATE_FORMAT(FROM_UNIXTIME(submit_time), %s) AS Submitted
             , submit_time
-            , MAX(IF(field_name='author_mail', field_value, NULL )) AS 'author_mail'
             , MAX(IF(field_name='latitude', field_value, NULL )) AS 'latitude'
             , MAX(IF(field_name='longitude', field_value, NULL )) AS 'longitude'
             , MAX(IF(field_name='logradouro', field_value, NULL )) AS 'logradouro'
@@ -49,15 +48,9 @@ class AprovacaoColabImovelDAO extends AprovacaoDAO {
             , MAX(IF(field_name='tempo_sem_utilizacao', field_value, NULL )) AS 'tempoInutilizado'
             FROM wp_cf7dbplugin_submits
             WHERE form_name = '".$this->formColab."' GROUP BY submit_time)
-            AS a JOIN 
-                (SELECT    
-                    MAX(IF(field_name='nome', field_value, NULL )) AS 'NomeUser'
-                  , MAX(IF(field_name='emailCadastro', field_value, NULL )) AS 'EmailUser'
-                  , MAX(IF(field_name='endereco', field_value, NULL )) AS 'EnderecoUser'
-                  , MAX(IF(field_name='datanasc', field_value, NULL )) AS 'datanasc'
-                  , MAX(IF(field_name='cep', field_value, NULL )) AS 'cepUser'  FROM wp_cf7dbplugin_submits
-                    WHERE form_name = '".$this->formUser."' GROUP BY submit_time) AS b WHERE a.plataformaStatus = '%s' 
-                  AND a.author_mail = b.EmailUser ".$tipo_aprovacao." ORDER BY a.plataformaApoioNumeroApoios DESC ".$limit;
+            AS a
+            WHERE a.plataformaStatus = '%s' 
+            ORDER BY a.submit_time ASC ".$limit;
         global $wpdb;
         $statement = $wpdb->prepare($query,'%b %e, %Y  %l:%i %p',$status);
         $results = $wpdb->get_results($statement);
@@ -65,7 +58,6 @@ class AprovacaoColabImovelDAO extends AprovacaoDAO {
             $colaboracao = new ColabImovel();
             $user = new Usuario();
             $colaboracao->id = $row->submit_time;
-            $colaboracao->author_email = $row->author_mail;
             $colaboracao->submitted = $row->Submitted;
             $colaboracao->latitude = $row->latitude;
             $colaboracao->longitude = $row->longitude;
@@ -81,11 +73,6 @@ class AprovacaoColabImovelDAO extends AprovacaoDAO {
             $colaboracao->pontoReferencia = $row->pontoReferencia;
             $colaboracao->status = $row->plataformaStatus;
             $colaboracao->numApoios = $row->plataformaApoioNumeroApoios;
-            $user->nome = $row->NomeUser;
-            $user->email = $row->EmailUser;
-            $user->endereco = $row->EnderecoUser;
-            $user->datanasc = $row->datanasc;
-            $user->cep = $row->cepUser;
             $colaboracaoImovel = new AprovacaoColabImovel($user,$colaboracao);
             array_push($colaboracoes,$colaboracaoImovel);
         }
