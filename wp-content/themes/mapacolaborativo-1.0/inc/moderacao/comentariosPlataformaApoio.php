@@ -110,25 +110,6 @@ function comentariosPlataformaApoio_tabela($tipo,$formComment) {
         } ?>
 		<div class="MCPRnester">
             <div class="MCPRcolum">
-        		<div class="MCPRidcell">
-                                <p class="MCPRh6">Autor</p>
-        		</div>
-        		<div class="MCPRcontentcell">
-                                <p class="MCPRh5"><?php echo $comentario->usuario->nome; ?></p>
-        		</div>
-        		
-        		<div class="MCPRidcell">
-                                <p class="MCPRh6">E-mail do autor</p>
-        		</div>
-        		<div class="MCPRcontentcell">
-                                <p class="MCPRh5"><?php echo $comentario->usuario->email; ?></p>
-        		</div>
-        		<div class="MCPRidcell">
-                                <p class="MCPRh6">Endereço do autor</p>
-        		</div>
-        		<div class="MCPRcontentcell">
-                                <p class="MCPRh5"> <?php echo $comentario->usuario->endereco; ?> <br><?php echo $comentario->usuario->cep; ?></p>
-        		</div>
                         	<div class="MCPRidcell">
                                 <p class="MCPRh6">Posicionamento do autor</p>
         		</div>
