@@ -483,14 +483,6 @@ function cfdbFilterSaveFile($formData)
 add_filter( 'wpcf7_validate_email*', 'custom_email_confirmation_validation_filter', 20, 2 );
 function custom_email_confirmation_validation_filter( $result, $tag ) {
     $tag = new WPCF7_Shortcode( $tag );
-
-    if ( $tag->name == 'author_mail' ){
-        $author_mail =  $_POST['author_mail'];
-        $count = getCountMail($author_mail);
-        if($count == 0){
-            $result->invalidate( $tag, "Email não registrado ou não confirmado. Verifique sua caixa de Email ou Cadastre-se ao lado." );
-        }
-    }
     
     if ( $tag->name == 'emailCadastro' ){
         $cadastro_mail =  $_POST['emailCadastro'];
