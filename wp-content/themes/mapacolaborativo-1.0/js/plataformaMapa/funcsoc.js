@@ -5,8 +5,7 @@ var featuresPropostas,stylePointLayer;
 jQuery(".tituloPlataforma").html("Mapa Colaborativo da Função Social da Propriedade");
 
 var imageIconPropsLayer = '../wp-content/themes/mapacolaborativo-1.0/images/img-map-marker-icon.png';
-var propsLayerCadastradas = platMapAPI.createCustomVectorLayer('rgba(122, 172, 241, 1)',imageIconPropsLayer,0.95,0.7);
-var propsLayerApontadas = platMapAPI.createCustomVectorLayer('rgba(230, 110, 137, 1)',imageIconPropsLayer,0.95,0.7);
+var propsLayerIndicados = platMapAPI.createCustomVectorLayer('rgba(122, 172, 241, 1)',imageIconPropsLayer,0.95,0.7);
 var isAjaxLoaded = false;
 var isHidden = false;
 /**
@@ -30,11 +29,8 @@ function objToFeature(infoFeature) {
             geometry: new ol.geom.Point(ol.proj.transform([lon, lat], 'EPSG:4326', 'EPSG:3857'))		
         });
 	featureProposta.set("DADOS_COLAB",infoFeature);
-        if(featureProposta.get("DADOS_COLAB").tipo_aprovacao == "Apontado"){
-            propsLayerApontadas.getSource().addFeature(featureProposta);
-        }else{
-            propsLayerCadastradas.getSource().addFeature(featureProposta);
-        }
+        
+  propsLayerIndicados.getSource().addFeature(featureProposta);
 	//propsLayer.getSource().addFeature(featureProposta);
 }
 
@@ -93,13 +89,9 @@ jQuery("#botoesMenuPlataforma2").on("mouseover",function(){
 jQuery("#botoesMenuPlataforma3").on("mouseover",function(){
     jQuery("#botoesMenuPlataforma3").addClass('hoveredMenuBt');
 });
-jQuery("#toggleCamadaApontada").on("click",function(){
-    platMapAPI.showHideCamada(propsLayerApontadas,jQuery("#toggleCamadaApontada p"),"Exibir Contribuições Apontadas","Contribuições Apontadas");
-    jQuery("#toggleCamadaApontada input").prop("checked", !jQuery("#toggleCamadaApontada input").prop("checked"));
-});
-jQuery("#toggleCamadaCadastrada").on("click",function(){
-    platMapAPI.showHideCamada(propsLayerCadastradas,jQuery("#toggleCamadaCadastrada p"),"Exibir Contribuições Cadastradas","Contribuições Cadastradas");
-    jQuery("#toggleCamadaCadastrada input").prop("checked", !jQuery("#toggleCamadaCadastrada input").prop("checked"));
+jQuery("#toggleCamadaIndicados").on("click",function(){
+    platMapAPI.showHideCamada(propsLayerIndicados,jQuery("#toggleCamadaIndicados p"),"Exibir Imóveis Indicados","Imóveis Indicados");
+    jQuery("#toggleCamadaIndicados input").prop("checked", !jQuery("#toggleCamadaIndicados input").prop("checked"));
 });
 /**
 * FUNÇÕES A EXECUTAR QUANDO PÁGINA CARREGAR
@@ -147,14 +139,19 @@ cam_SUB_SE_SUBMO = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/20
 // Novas camadas (ADICIONADAS EM SETEMBRO DE 2020)
 var c_MRVU = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2020-09/MRVU.kml');
 // var c_EETU = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2020-09/EETU.kml');
-var c_MUC_MUQ = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2020-09/MUC_MUQ.kml');
+// var c_MUC_MUQ = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2020-09/MUC_MUQ.kml');
 var c_OPERACAO_URBANA_CENTRO = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2020-09/OPERACAO_URBANA_CENTRO.kml');
 var c_OPERACOES_URBANAS_CONSORCIADAS = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2020-09/OPERACOES_URBANAS_CONSORCIADAS.kml');
-var c_PDE_2A_SETORES_MEM = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2020-09/PDE_2A_SETORES_MEM.kml');
+// var c_PDE_2A_SETORES_MEM = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2020-09/PDE_2A_SETORES_MEM.kml');
 var c_SUB_SE_MOOCA = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2020-09/SUB_SE_MOOCA.kml');
 var c_ZEIS_2 = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2020-09/ZEIS_2.kml');
 var c_ZEIS_3 = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2020-09/ZEIS_3.kml');
 var c_ZEIS_5 = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2020-09/ZEIS_5.kml');
+
+// Novas camadas (ADICIONADAS EM MARÇO DE 2024)
+var c_MUC = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2024-03/MUC.kml');
+var c_MQU = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2024-03/MQU.kml');
+var c_MEM = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2024-03/MEM.kml');
 
 /* HOVER POPUP */
 var container = document.getElementById('popup');
@@ -187,11 +184,27 @@ var map = new ol.Map({
     }),
     c_MRVU,
     // c_EETU,
-    c_MUC_MUQ,c_OPERACAO_URBANA_CENTRO,c_OPERACOES_URBANAS_CONSORCIADAS,c_PDE_2A_SETORES_MEM,c_SUB_SE_MOOCA,
+    // c_MUC_MUQ,
+    c_MUC,
+    c_MQU,
+    c_OPERACAO_URBANA_CENTRO,
+    c_OPERACOES_URBANAS_CONSORCIADAS,
+    // c_PDE_2A_SETORES_MEM,
+    c_MEM,
+    c_SUB_SE_MOOCA,
     c_ZEIS_2,
-    // c_ZEIS_3,c_ZEIS_5,
-    cam_OU_CENTRO,cam_OUC_AGUA_BRANCA,cam_ZEIS_2,cam_ZEIS_3,cam_ZEIS_5,cam_EETU_SANTO_AMARO,cam_SUB_SE_SUBMO,camada3,
-    propsLayerApontadas,propsLayerCadastradas,camada1
+    // c_ZEIS_3,
+    // c_ZEIS_5,
+    cam_OU_CENTRO,
+    cam_OUC_AGUA_BRANCA,
+    cam_ZEIS_2,
+    cam_ZEIS_3,
+    cam_ZEIS_5,
+    cam_EETU_SANTO_AMARO,
+    cam_SUB_SE_SUBMO,
+    camada3,
+    propsLayerIndicados,
+    camada1
   ],
   overlays: [overlay],
   target: 'map',

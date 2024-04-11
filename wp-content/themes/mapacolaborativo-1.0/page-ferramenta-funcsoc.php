@@ -32,9 +32,6 @@
           <div class="BotaoApoiarVermelho BotoesMenu popmake-351" id="botoesMenuPlataforma1">
               <label class="unselectable">Apresentação</label>
           </div>
-          <div class="BotaoApoiarVermelho BotoesMenu popmake-159" id="botoesMenuPlataforma2">
-              <label class="unselectable">Cadastre-se</label>
-          </div>
           <div class="BotaoApoiarVermelho BotoesMenu popmake-353" id="botoesMenuPlataforma3">
               <label class="unselectable">Participe</label>
           </div>
@@ -47,47 +44,13 @@
                 <icone style="background-color: #B3B3B3;" class="iconCircle"></icone>
                 <label>MSP</label>
               </li>
-              <li id="areaPrevista">
+              <li id="macroareasNotificacao">
                 <icone style="background-color: #f3efbb;" class="iconCircle"></icone>
-                <label>Áreas futuras de notificação para o PEUC</label>
+                <label>Macroáreas de Notificação (art. 95, §4º do PDE)</label>
               </li>
-              <li id="toggleCamadaApontada" class="legClicavel">
-                <icone style="background-color: #e66e89;" class="iconCircle"></icone>
-                <label>Contribuições Apontadas</label>
-              </li>
-              <li id="toggleCamadaCadastrada" class="legClicavel">
+              <li id="toggleCamadaIndicados" class="legClicavel">
                 <icone style="background-color: #7E9FFF;" class="iconCircle"></icone>
-                <label>Contribuições Cadastradas</label>
-              </li>     
-              <li style="border: double !important;">
-                  <div align="center"><label><b>Início atuação: 2014</b></label></div>
-              </li>
-              <li>
-                <icone style="background-color: #6668bb;" class="iconLine"></icone>
-                <label>OU Centro</label>
-              </li>
-              <li>
-                <icone style="background-color: #0f0bf8;" class="iconLine"></icone>
-                <label>OUC Água Branca</label>
-              </li>
-              <li>
-                <icone style="background-color: #D30000;" class="iconLine"></icone>
-                <label>ZEIS 2, 3 e 5</label>
-              </li>
-              <li style="border: double !important;">
-                  <div align="center"><label><b>Início atuação: 2015</b></label></div>
-              </li>
-              <li>
-                <icone style="background-color: #3be420;" class="iconLine"></icone>
-                <label>Subprefeitura Sé</label>
-              </li>
-              <li>
-                <icone style="background-color: #2e5a00;" class="iconLine"></icone>
-                <label>Subprefeitura Mooca</label>
-              </li>
-              <li>
-                <icone style="background-color: #61271a;" class="iconLine"></icone>
-                <label>EETU Santo Amaro</label>
+                <label>Imóveis Indicados</label>
               </li>
             </ul>
           </div>
