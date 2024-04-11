@@ -11,5 +11,5 @@
  * @author d827421
  */
 interface IColabImovelDAO {
-    public function getColaboracoesApproved();
+    public function getColaboracoesMapa($tipo);
 }

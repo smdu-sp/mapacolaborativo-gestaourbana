@@ -22,7 +22,20 @@ class ColabImovelDAO implements IColabImovelDAO{
         $this->formColab = $formColab;
         $this->formUser = $formUser;
     }
-    public function getColaboracoesApproved() {
+    public function getColaboracoesMapa($tipo) {
+        $query_where = '';
+
+        switch ($tipo) {
+            case 'aprovados':
+                $query_where = "A.plataformaStatus = 'S'";
+                break;
+            case 'ativos':
+                $query_where = "A.plataformaStatus = 'N' OR A.plataformaStatus = 'S'";
+                break;
+            default:
+                $query_where = '1 = 1';
+        }
+
         $colaboracoes = [];
         $query = "SELECT * FROM 
             (SELECT * FROM(SELECT
@@ -42,7 +55,7 @@ class ColabImovelDAO implements IColabImovelDAO{
             , MAX(IF(field_name='plataformaApoioNumeroApoios', field_value, NULL )) AS 'plataformaApoioNumeroApoios'
             , MAX(IF(field_name='tempo_sem_utilizacao', field_value, NULL )) AS 'tempoInutilizado'
             FROM wp_cf7dbplugin_submits WHERE form_name = '" . $this->formColab . "' GROUP BY submit_time) 
-            AS A WHERE A.plataformaStatus = 'S') AS B;";
+            AS A WHERE " . $query_where . ") AS B;";
         global $wpdb;
         $results = $wpdb->get_results($query);
         foreach ($results as $row){

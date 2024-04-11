@@ -1209,26 +1209,17 @@ function plataformaApoio_funcaoSocial_getAllColaboracoes_ajax()
     require_once "inc/persistence/funcao_social/ColabImovelDAO.php";
     require_once "inc/entity/funcao_social/ColabImovel.php";
     $colabImovelDAO = new ColabImovelDAO('Função Social - Formulário Marcação Imóvel','Plataforma Apoio - Formulário de Usuário');
-    $colaboracoes = $colabImovelDAO->getColaboracoesApproved();
+    $colaboracoes = $colabImovelDAO->getColaboracoesMapa('aprovados');
     $colaboracoesJSON = [];
     foreach ($colaboracoes as $colaboracao){
         $latlon = [
                   'latitude' => $colaboracao->latitude,
                   'longitude' => $colaboracao->longitude];
-        $autor = [
-            'id' => $colaboracao->autor->id,
-            'email' => $colaboracao->autor->email,
-            'nome' => $colaboracao->autor->nome,
-            'endereco' => $colaboracao->autor->endereco,
-            'instituicao' => $colaboracao->autor->instituicao,
-            'cep' => $colaboracao->autor->cep
-        ];
         $objColaboracao = [
             'latlon' => $latlon,
             'id' => $colaboracao->id,
             'logradouro' => $colaboracao->logradouro,
             'numero' => $colaboracao->numeroLogradouro,
-            'autor' => $autor,
             'numApoios' => $colaboracao->numApoios,
             'ponto_referencia' => $colaboracao->pontoReferencia,
             'caracteristicas' => $colaboracao->caracteristicaImovel,
@@ -1251,8 +1242,8 @@ function plataformaApoio_bordasDaCidade_getAllColaboracoes_ajax()
     require_once "inc/persistence/bordas_da_cidade/ColabTurismoDAO.php";
     $colabTurismoDAO = new ColabTurismoDAO('Bordas da Cidade - Turismo','Plataforma Apoio - Formulário de Usuário');
     $colabProdutorDAO = new ColabProdutorDAO('Bordas da Cidade - Produtor','Plataforma Apoio - Formulário de Usuário');
-    $colaboracoesProdutor = $colabProdutorDAO->getColaboracoesApproved();
-    $colaboracoesTurismo = $colabTurismoDAO->getColaboracoesApproved();
+    $colaboracoesProdutor = $colabProdutorDAO->getColaboracoesMapa('aprovados');
+    $colaboracoesTurismo = $colabTurismoDAO->getColaboracoesMapa('aprovados');
     $colaboracoesJSONProdutor = [];
     $colaboracoesJSONTurismo = [];
     foreach ($colaboracoesProdutor as $colaboracao){
