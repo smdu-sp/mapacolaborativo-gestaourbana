@@ -127,26 +127,26 @@ var cam_OU_CENTRO,cam_OUC_AGUA_BRANCA,cam_ZEIS_2,cam_ZEIS_3,
 camada1 = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/2016/07/MSP_Contorno.kml');
 
 //camada2 = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/2016/07/_1_PRIORITARIA.kml');
-camada3 = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/2016/07/2_NAO_PRIORITARIA.kml');
-cam_OU_CENTRO = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/2016/08/Camadas_Etapas_AGO-2016/2014/OU_CENTRO.kml');
-cam_OUC_AGUA_BRANCA = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/2016/08/Camadas_Etapas_AGO-2016/2014/OUC_AGUA_BRANCA.kml');
-cam_ZEIS_2 = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/2016/08/Camadas_Etapas_AGO-2016/2014/ZEIS_2.kml');
-cam_ZEIS_3 = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/2016/08/Camadas_Etapas_AGO-2016/2014/ZEIS_3.kml');
-cam_ZEIS_5 = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/2016/08/Camadas_Etapas_AGO-2016/2014/ZEIS_5.kml');
-cam_EETU_SANTO_AMARO = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/2016/08/Camadas_Etapas_AGO-2016/2015/EETU_SANTO_AMARO.kml');
-cam_SUB_SE_SUBMO = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/2016/08/Camadas_Etapas_AGO-2016/2015/SUBSE_SUBMO.kml');
+// camada3 = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/2016/07/2_NAO_PRIORITARIA.kml');
+// cam_OU_CENTRO = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/2016/08/Camadas_Etapas_AGO-2016/2014/OU_CENTRO.kml');
+// cam_OUC_AGUA_BRANCA = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/2016/08/Camadas_Etapas_AGO-2016/2014/OUC_AGUA_BRANCA.kml');
+// cam_ZEIS_2 = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/2016/08/Camadas_Etapas_AGO-2016/2014/ZEIS_2.kml');
+// cam_ZEIS_3 = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/2016/08/Camadas_Etapas_AGO-2016/2014/ZEIS_3.kml');
+// cam_ZEIS_5 = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/2016/08/Camadas_Etapas_AGO-2016/2014/ZEIS_5.kml');
+// cam_EETU_SANTO_AMARO = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/2016/08/Camadas_Etapas_AGO-2016/2015/EETU_SANTO_AMARO.kml');
+// cam_SUB_SE_SUBMO = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/2016/08/Camadas_Etapas_AGO-2016/2015/SUBSE_SUBMO.kml');
 
 // Novas camadas (ADICIONADAS EM SETEMBRO DE 2020)
-var c_MRVU = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2020-09/MRVU.kml');
+var c_MRVU = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2024-04/MRVU.kml');
 // var c_EETU = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2020-09/EETU.kml');
 // var c_MUC_MUQ = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2020-09/MUC_MUQ.kml');
-var c_OPERACAO_URBANA_CENTRO = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2020-09/OPERACAO_URBANA_CENTRO.kml');
-var c_OPERACOES_URBANAS_CONSORCIADAS = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2020-09/OPERACOES_URBANAS_CONSORCIADAS.kml');
+// var c_OPERACAO_URBANA_CENTRO = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2020-09/OPERACAO_URBANA_CENTRO.kml');
+// var c_OPERACOES_URBANAS_CONSORCIADAS = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2020-09/OPERACOES_URBANAS_CONSORCIADAS.kml');
 // var c_PDE_2A_SETORES_MEM = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2020-09/PDE_2A_SETORES_MEM.kml');
-var c_SUB_SE_MOOCA = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2020-09/SUB_SE_MOOCA.kml');
-var c_ZEIS_2 = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2020-09/ZEIS_2.kml');
-var c_ZEIS_3 = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2020-09/ZEIS_3.kml');
-var c_ZEIS_5 = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2020-09/ZEIS_5.kml');
+// var c_SUB_SE_MOOCA = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2020-09/SUB_SE_MOOCA.kml');
+// var c_ZEIS_2 = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2020-09/ZEIS_2.kml');
+// var c_ZEIS_3 = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2020-09/ZEIS_3.kml');
+// var c_ZEIS_5 = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2020-09/ZEIS_5.kml');
 
 // Novas camadas (ADICIONADAS EM MARÇO DE 2024)
 var c_MUC = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2024-03/MUC.kml');
@@ -187,22 +187,22 @@ var map = new ol.Map({
     // c_MUC_MUQ,
     c_MUC,
     c_MQU,
-    c_OPERACAO_URBANA_CENTRO,
-    c_OPERACOES_URBANAS_CONSORCIADAS,
+    // c_OPERACAO_URBANA_CENTRO,
+    // c_OPERACOES_URBANAS_CONSORCIADAS,
     // c_PDE_2A_SETORES_MEM,
     c_MEM,
-    c_SUB_SE_MOOCA,
-    c_ZEIS_2,
+    // c_SUB_SE_MOOCA,
+    // c_ZEIS_2,
     // c_ZEIS_3,
     // c_ZEIS_5,
-    cam_OU_CENTRO,
-    cam_OUC_AGUA_BRANCA,
-    cam_ZEIS_2,
-    cam_ZEIS_3,
-    cam_ZEIS_5,
-    cam_EETU_SANTO_AMARO,
-    cam_SUB_SE_SUBMO,
-    camada3,
+    // cam_OU_CENTRO,
+    // cam_OUC_AGUA_BRANCA,
+    // cam_ZEIS_2,
+    // cam_ZEIS_3,
+    // cam_ZEIS_5,
+    // cam_EETU_SANTO_AMARO,
+    // cam_SUB_SE_SUBMO,
+    // camada3,
     propsLayerIndicados,
     camada1
   ],

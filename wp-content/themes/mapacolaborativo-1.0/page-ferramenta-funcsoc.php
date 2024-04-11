@@ -45,7 +45,7 @@
                 <label>MSP</label>
               </li>
               <li id="macroareasNotificacao">
-                <icone style="background-color: #f3efbb;" class="iconCircle"></icone>
+                <icone style="background-color: rgb(255, 212, 214);" class="iconCircle"></icone>
                 <label>Macroáreas de Notificação (art. 95, §4º do PDE)</label>
               </li>
               <li id="toggleCamadaIndicados" class="legClicavel">
