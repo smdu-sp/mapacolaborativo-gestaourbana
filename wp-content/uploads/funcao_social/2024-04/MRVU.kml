@@ -364,7 +364,7 @@
 					<SimpleData name="tx_macro_d">Macroárea de Redução da Vulnerabilidade Urbana</SimpleData>
 					<SimpleData name="cd_macro_d">36</SimpleData>
 					<SimpleData name="cd_tema_di">2</SimpleData>
-					<SimpleData name="DESCRICAO">Na Macroárea de Redução da Vulnerabilidade Urbana, exclusivamente para glebas ou lotes com área superior a 20.000m²</SimpleData>
+					<SimpleData name="DESCRICAO">Não é possível indicar imóveis na Macroárea de Redução da Vulnerabilidade Urbana no momento.&lt;br&gt;&lt;br&gt;Se possível contribua com imóveis nas áreas em destaque vermelho.</SimpleData>
 				</SchemaData>
 			</ExtendedData>
 			<MultiGeometry>
