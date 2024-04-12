@@ -49,7 +49,7 @@ class AprovacaoColabImovelDAO extends AprovacaoDAO {
             FROM wp_cf7dbplugin_submits
             WHERE form_name = '".$this->formColab."' GROUP BY submit_time)
             AS a
-            WHERE a.plataformaStatus = '%s' 
+            WHERE a.plataformaStatus = '%s'" . $tipo_aprovacao . "
             ORDER BY a.submit_time ASC ".$limit;
         global $wpdb;
         $statement = $wpdb->prepare($query,'%b %e, %Y  %l:%i %p',$status);
