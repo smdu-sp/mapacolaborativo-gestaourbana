@@ -42,7 +42,7 @@ jQuery.ajax({
 	url: '../wp-admin/admin-ajax.php',
 	data: { action: 'plataformaApoio_funcaoSocial_getAllColaboracoes' },
 	success: function(data){
-            featuresPropostas = JSON.parse(data);
+            featuresPropostas = data;
             isAjaxLoaded = true;
             carregarPropostas(featuresPropostas);
 	}

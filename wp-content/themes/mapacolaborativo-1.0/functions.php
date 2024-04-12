@@ -1206,6 +1206,7 @@ add_action( 'wp_ajax_nopriv_plataformaApoio_funcaoSocial_getAllColaboracoes', 'p
 add_action( 'wp_ajax_plataformaApoio_funcaoSocial_getAllColaboracoes', 'plataformaApoio_funcaoSocial_getAllColaboracoes_ajax' );
 function plataformaApoio_funcaoSocial_getAllColaboracoes_ajax()
 {
+    header('Content-Type: application/json; charset=utf-8');
     require_once "inc/persistence/funcao_social/ColabImovelDAO.php";
     require_once "inc/entity/funcao_social/ColabImovel.php";
     $colabImovelDAO = new ColabImovelDAO('Função Social - Formulário Marcação Imóvel','Plataforma Apoio - Formulário de Usuário');
