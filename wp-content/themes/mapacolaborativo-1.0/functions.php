@@ -1210,7 +1210,7 @@ function plataformaApoio_funcaoSocial_getAllColaboracoes_ajax()
     require_once "inc/persistence/funcao_social/ColabImovelDAO.php";
     require_once "inc/entity/funcao_social/ColabImovel.php";
     $colabImovelDAO = new ColabImovelDAO('Função Social - Formulário Marcação Imóvel','Plataforma Apoio - Formulário de Usuário');
-    $colaboracoes = $colabImovelDAO->getColaboracoesMapa('aprovados');
+    $colaboracoes = $colabImovelDAO->getColaboracoesMapa('ativos');
     $colaboracoesJSON = [];
     foreach ($colaboracoes as $colaboracao){
         $latlon = [
