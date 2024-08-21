@@ -206,10 +206,10 @@ function popupClose() {
 * CONFIGURA MAPA PARA EXIBIÇÃO
 */
 var view = new ol.View({
-  center: [-5191207.638373509,-2698731.105121977],
-  zoom: 11,
-  minZoom: 10,
-  maxZoom: 30
+  center: [-5176477.419686802, -2706442.884678815],
+  zoom: 15.5,
+  minZoom: 15.5,
+  maxZoom: 19.5
 });
 var map = new ol.Map({
   layers: [
@@ -384,6 +384,7 @@ function adicionarPin(rota, lon, lat, opcao) {
 var displayFeatureInfo = function(pixel,evt) {
   var feature = getFeatureAtPixelX(pixel,map);
   var coordinate = evt.coordinate;
+  console.log(coordinate)
   var lonlat = ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326');
   var lon = lonlat[0];
   var lat = lonlat[1];
