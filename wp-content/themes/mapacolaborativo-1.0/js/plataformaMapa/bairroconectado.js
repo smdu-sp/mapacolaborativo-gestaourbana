@@ -384,11 +384,9 @@ function adicionarPin(rota, lon, lat, opcao) {
 var displayFeatureInfo = function(pixel,evt) {
   var feature = getFeatureAtPixelX(pixel,map);
   var coordinate = evt.coordinate;
-  console.log(coordinate)
   var lonlat = ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326');
   var lon = lonlat[0];
   var lat = lonlat[1];
-  var rota = 1;
   
   if (feature) {
     // DEBUG
@@ -397,12 +395,13 @@ var displayFeatureInfo = function(pixel,evt) {
     console.log(feature.get("DESCRICAO"));
     console.warn(feature.get('CAMADA'));
     if(feature.get("DADOS_COLAB") == null){
+      var rota = feature.get("ROTA");
       var popupHtml = feature.get('DESCRICAO');
       if(feature.get('CAMADA') == 1 || feature.get('sg_macro_d') == "EETU"){
         popupHtml += '<div>'
 
         for (const index in imageIconPropsLayer) {
-          popupHtml +=  `<button type="button" title="${tooltips[index]} "style="background: url('${imageIconPropsLayer[index]}'); border: none; width: 40px; height: 40px; border-radius: 50px; cursor: pointer; margin: 5px;" onclick="adicionarPin(${rota}, ${lon}, ${lat}, ${index})"></button>`
+          popupHtml +=  `<button type="button" title="${tooltips[index]} "style="background: url('${imageIconPropsLayer[index]}'); border: none; width: 40px; height: 40px; border-radius: 50px; cursor: pointer; margin: 5px;" onclick="adicionarPin('${rota}', ${lon}, ${lat}, ${index})"></button>`
         }
 
         popupHtml += '</div>';
