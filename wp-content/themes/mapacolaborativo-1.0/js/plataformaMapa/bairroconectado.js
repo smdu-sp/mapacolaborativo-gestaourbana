@@ -124,6 +124,26 @@ jQuery("[id^=rota]").on("click",function(){
     var id = jQuery(this).attr("id");
     zoomRota(id);
 });
+jQuery("#botaoEnviarMapa").on("click", async function() {
+    fd = new FormData();
+    fd.append("escolhas", JSON.stringify(escolhas));
+
+    try {
+      const res = await fetch(
+        '/enviar-mapa',
+        {
+          method: 'POST',
+          body: fd,
+        },
+      );
+
+      const resData = await res.json();
+
+      console.log(resData);
+    } catch (err) {
+      console.error(err);
+    }
+});
 // jQuery("#toggleCamadaIndicados").on("click",function(){
 //     platMapAPI.showHideCamada(propsLayerIndicados,jQuery("#toggleCamadaIndicados p"),"Exibir Imóveis Indicados","Imóveis Indicados");
 //     jQuery("#toggleCamadaIndicados input").prop("checked", !jQuery("#toggleCamadaIndicados input").prop("checked"));
@@ -371,8 +391,8 @@ function openPopupForm(){
 
 var escolhas = [];
 
-function adicionarPin(rota, lon, lat, opcao) {
-  escolhas.push([rota, lon, lat, opcao]);
+function adicionarPin(rota, lat, lon, opcao) {
+  escolhas.push([rota, lat, lon, opcao]);
   const infoFeature = {
     latlon: {
       longitude: lon,
@@ -406,7 +426,7 @@ var displayFeatureInfo = function(pixel,evt) {
         popupHtml += '<div>'
 
         for (const index in imageIconPropsLayer) {
-          popupHtml +=  `<button type="button" title="${tooltips[index]} "style="background: url('${imageIconPropsLayer[index]}'); border: none; width: 40px; height: 40px; border-radius: 50px; cursor: pointer; margin: 5px;" onclick="adicionarPin('${rota}', ${lon}, ${lat}, ${index})"></button>`
+          popupHtml +=  `<button type="button" title="${tooltips[index]} "style="background: url('${imageIconPropsLayer[index]}'); border: none; width: 40px; height: 40px; border-radius: 50px; cursor: pointer; margin: 5px;" onclick="adicionarPin('${rota}', ${lat}, ${lon}, ${index})"></button>`
         }
 
         popupHtml += '</div>';

@@ -52,6 +52,10 @@
                 <icone style="background-color: #ed7d31;" class="iconCircle"></icone>
                 <label>Rota C</label>
               </li>
+              <li id="botoes">
+                <button id="botaoEnviarMapa" type="button">Enviar</button>
+                <button type="button">Cancelar</button>
+              </li>
             </ul>
           </div>
         </div>
