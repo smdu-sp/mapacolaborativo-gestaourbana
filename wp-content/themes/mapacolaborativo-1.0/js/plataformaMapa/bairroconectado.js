@@ -168,7 +168,7 @@ camada1 = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/2016/07/MSP
 // cam_SUB_SE_SUBMO = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/2016/08/Camadas_Etapas_AGO-2016/2015/SUBSE_SUBMO.kml');
 
 // Novas camadas (ADICIONADAS EM SETEMBRO DE 2020)
-var c_MRVU = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2024-04/MRVU.kml');
+// var c_MRVU = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2024-04/MRVU.kml');
 // var c_EETU = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2020-09/EETU.kml');
 // var c_MUC_MUQ = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2020-09/MUC_MUQ.kml');
 // var c_OPERACAO_URBANA_CENTRO = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2020-09/OPERACAO_URBANA_CENTRO.kml');
@@ -180,9 +180,12 @@ var c_MRVU = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_s
 // var c_ZEIS_5 = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2020-09/ZEIS_5.kml');
 
 // Novas camadas (ADICIONADAS EM MARÇO DE 2024)
-var c_MUC = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2024-03/MUC.kml');
-var c_MQU = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2024-03/MQU.kml');
-var c_MEM = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2024-03/MEM.kml');
+// var c_MUC = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2024-03/MUC.kml');
+// var c_MQU = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2024-03/MQU.kml');
+// var c_MEM = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2024-03/MEM.kml');
+var c_RotaA = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/rota_a.kml');
+var c_RotaB = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/rota_b.kml');
+var c_RotaC = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/rota_c.kml');
 
 /* HOVER POPUP */
 var container = document.getElementById('popup');
@@ -221,7 +224,7 @@ var map = new ol.Map({
     // c_OPERACAO_URBANA_CENTRO,
     // c_OPERACOES_URBANAS_CONSORCIADAS,
     // c_PDE_2A_SETORES_MEM,
-    c_MEM,
+    // c_MEM,
     // c_SUB_SE_MOOCA,
     // c_ZEIS_2,
     // c_ZEIS_3,
@@ -234,6 +237,9 @@ var map = new ol.Map({
     // cam_EETU_SANTO_AMARO,
     // cam_SUB_SE_SUBMO,
     // camada3,
+    c_RotaA,
+    c_RotaB,
+    c_RotaC,
     propsLayerIndicados[28],
     propsLayerIndicados[29],
     propsLayerIndicados[30],
@@ -248,7 +254,7 @@ var map = new ol.Map({
     propsLayerIndicados[39],
     propsLayerIndicados[40],
     propsLayerIndicados[41],
-    camada1
+    camada1,
   ],
   overlays: [overlay],
   target: 'map',
