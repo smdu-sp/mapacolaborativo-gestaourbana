@@ -38,19 +38,19 @@
           <div class="BotaoApoiarVermelho BotoesMenu" id="botoesMenuPlataforma4">
               <label class="unselectable">Legenda</label>
           </div>
-          <div id="containerSubmenu" class="isHidden">
+          <div id="containerSubmenu">
             <ul id="legenda" class="unselectable">
-              <li id="msp">
-                <icone style="background-color: #B3B3B3;" class="iconCircle"></icone>
-                <label>MSP</label>
+              <li id="rotaA">
+                <icone style="background-color: #f94668;" class="iconCircle"></icone>
+                <label>Rota A</label>
               </li>
-              <li id="macroareasNotificacao">
-                <icone style="background-color: rgb(255, 212, 214);" class="iconCircle"></icone>
-                <label>Macroáreas de Notificação (art. 95, §4º do PDE)</label>
+              <li id="rotaB">
+                <icone style="background-color: #0a3299;" class="iconCircle"></icone>
+                <label>Rota B</label>
               </li>
-              <li id="toggleCamadaIndicados" class="legClicavel">
-                <icone style="background-color: #7E9FFF;" class="iconCircle"></icone>
-                <label>Imóveis Indicados</label>
+              <li id="rotaC">
+                <icone style="background-color: #ed7d31;" class="iconCircle"></icone>
+                <label>Rota C</label>
               </li>
             </ul>
           </div>

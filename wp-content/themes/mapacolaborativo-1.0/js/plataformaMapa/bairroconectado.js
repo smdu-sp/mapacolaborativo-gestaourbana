@@ -19,7 +19,7 @@ var tooltips = {
 }
 
 var featuresPropostas,stylePointLayer;
-jQuery(".tituloPlataforma").html("Mapa Colaborativo da Função Social da Propriedade");
+jQuery(".tituloPlataforma").html("Bairro Conectado: Terminal Sapopemba");
 
 var imageIconPropsLayer = {};
 var propsLayerIndicados = {};
@@ -120,6 +120,10 @@ jQuery("#botoesMenuPlataforma2").on("mouseover",function(){
 jQuery("#botoesMenuPlataforma3").on("mouseover",function(){
     jQuery("#botoesMenuPlataforma3").addClass('hoveredMenuBt');
 });
+jQuery("[id^=rota]").on("click",function(){
+    var id = jQuery(this).attr("id");
+    zoomRota(id);
+});
 // jQuery("#toggleCamadaIndicados").on("click",function(){
 //     platMapAPI.showHideCamada(propsLayerIndicados,jQuery("#toggleCamadaIndicados p"),"Exibir Imóveis Indicados","Imóveis Indicados");
 //     jQuery("#toggleCamadaIndicados input").prop("checked", !jQuery("#toggleCamadaIndicados input").prop("checked"));
@@ -127,30 +131,30 @@ jQuery("#botoesMenuPlataforma3").on("mouseover",function(){
 /**
 * FUNÇÕES A EXECUTAR QUANDO PÁGINA CARREGAR
 */
-jQuery(document).ready(function(){
-    VMasker(document.getElementById("CEP")).maskPattern('99999-999');
-    /**
-    * MOSTRA LEGENDAS
-    */
-    var isLegendaOn = false;
-    var submenuHeight = jQuery('#containerSubmenu').height();
-    jQuery('#containerSubmenu').height("0");
-    jQuery('#containerSubmenu').removeClass("isHidden");
-    jQuery('#botoesMenuPlataforma4').click(function(){
-      if(isLegendaOn){
-        jQuery('#containerSubmenu').animate({height: "0px"});
-        isLegendaOn = false;
-      }
-      else {
-        jQuery('#containerSubmenu').animate({height: submenuHeight});
-        isLegendaOn = true;
-      }
-    });
-    // Ativa/Oculta layers (tags: toggle layers toggle camadas)
-    jQuery('#legenda > .legClicavel').click(function(){
-        jQuery(this).toggleClass("legLayerInativa");
-    });
-});
+// jQuery(document).ready(function(){
+//     VMasker(document.getElementById("CEP")).maskPattern('99999-999');
+//     /**
+//     * MOSTRA LEGENDAS
+//     */
+//     var isLegendaOn = false;
+//     var submenuHeight = jQuery('#containerSubmenu').height();
+//     jQuery('#containerSubmenu').height("0");
+//     jQuery('#containerSubmenu').removeClass("isHidden");
+//     jQuery('#botoesMenuPlataforma4').click(function(){
+//       if(isLegendaOn){
+//         jQuery('#containerSubmenu').animate({height: "0px"});
+//         isLegendaOn = false;
+//       }
+//       else {
+//         jQuery('#containerSubmenu').animate({height: submenuHeight});
+//         isLegendaOn = true;
+//       }
+//     });
+//     // Ativa/Oculta layers (tags: toggle layers toggle camadas)
+//     jQuery('#legenda > .legClicavel').click(function(){
+//         jQuery(this).toggleClass("legLayerInativa");
+//     });
+// });
 var camada1,camada2,camada3;
 var cam_OU_CENTRO,cam_OUC_AGUA_BRANCA,cam_ZEIS_2,cam_ZEIS_3,
     cam_ZEIS_5,cam_EETU_SANTO_AMARO,cam_SUB_SE_SUBMO;
@@ -208,7 +212,7 @@ function popupClose() {
 var view = new ol.View({
   center: [-5176477.419686802, -2706442.884678815],
   zoom: 15.5,
-  minZoom: 15.5,
+  minZoom: 11.5,
   maxZoom: 19.5
 });
 var map = new ol.Map({
@@ -384,6 +388,7 @@ function adicionarPin(rota, lon, lat, opcao) {
 var displayFeatureInfo = function(pixel,evt) {
   var feature = getFeatureAtPixelX(pixel,map);
   var coordinate = evt.coordinate;
+  console.log(coordinate);
   var lonlat = ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326');
   var lon = lonlat[0];
   var lat = lonlat[1];
@@ -459,3 +464,26 @@ map.getView().on('propertychange', function(e){
 //    iconStyle.setScale(0.2 + (zoomAtual*0.12 -1)); // ALTERAR FATOR DE MULTIPLICACAO
   }
 });
+
+function zoomRota(rota) {
+  let rotas = {
+    rotaA: {
+      center: [-5176691.927215281, -2705956.4424095075],
+      zoom: 16,    
+    },
+    rotaB: {
+      center: [-5175972.398025264, -2706145.6144031277],
+      zoom: 16.5,    
+    },
+    rotaC: {
+      center: [-5176350.742012504, -2707034.0471588774],
+      zoom: 16.5,    
+    },
+  }
+
+  view.setZoom(rotas[rota]["zoom"]);
+  view.setCenter(rotas[rota]["center"]);
+
+
+
+}
