@@ -221,6 +221,7 @@ var overlay = new ol.Overlay( /** @type {olx.OverlayOptions} */ ({
     duration: 250
   }
 }));
+
 function popupClose() {
     overlay.setPosition(undefined);
     return false;
@@ -392,13 +393,15 @@ function openPopupForm(){
 var escolhas = [];
 
 function adicionarPin(rota, lat, lon, opcao) {
-  escolhas.push([rota, lat, lon, opcao]);
+  var idPin = escolhas.length + 1;
+  escolhas.push([rota, lat, lon, opcao, idPin]);
   const infoFeature = {
     latlon: {
       longitude: lon,
       latitude: lat,
     },
     index: opcao,
+    id: idPin,
   }
 
   objToFeature(infoFeature);
@@ -523,7 +526,8 @@ function zoomRota(rota) {
 
   view.setZoom(rotas[rota]["zoom"]);
   view.setCenter(rotas[rota]["center"]);
+}
 
-
-
+function iniciarFase() {
+  jQuery(".modalContainer").addClass("hidden");
 }

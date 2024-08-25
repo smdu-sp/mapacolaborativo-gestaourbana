@@ -78,6 +78,31 @@ get_header();
             </div>
           </div>
         </div>
+        <div class="modalContainer">
+          <div class="modal">
+            <p style="margin-top: 0;"><b>Queremos saber quais ações de melhoria você gostaria de sugerir em cada rota.</b></p>
+            <div style="display: flex; flex-wrap: wrap; width: 620px;">
+              <?php
+              foreach ($results as $linha) {
+              ?>
+                <div style="background: transparent; display: flex; flex: 0 0 33.3333%; height: 54px; border: none; padding: 5px 5px; box-sizing: border-box">
+                  <img src="../wp-content/uploads/2024/08/<?= $linha->id_opcao ?>.png">
+                  <span style="text-align: left; margin-left: 6px;">
+                    <?= $linha->descricao ?>
+                  </span>
+              </div>
+              <?php
+              }
+              ?>
+            </div>
+            <p><b>Passo 1:</b><br>Escolha uma rota no mapa.</p>
+            <p><b>Passo 2:</b><br>Clique no mapa para marcar onde você acha que as melhorias devem ser feitas.</p>
+            <p><b>Passo 3:</b><br>Confirme sua participação clicando em "Enviar".</p>
+            <div class="centralizar">
+            <button class="botoes botaoIniciar" type="button" onclick="iniciarFase()">Começar</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -129,7 +154,49 @@ get_header();
   }
 
   .hidden {
-    display: none;
+    display: none !important;
+  }
+
+  .modalContainer {
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(80, 80, 80, 0.7);
+    z-index: 9998;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal {
+    position: relative;
+    display: inline-block;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 10px;
+    z-index: 9999;
+    margin: auto;
+    vertical-align: middle;
+    padding: 30px;
+  }
+
+  .centralizar {
+    text-align: center;
+  }
+
+  .botoes {
+    padding: 8px 16px;
+    border: none;
+    color: white;
+    font-weight: 700;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 6px;
+  }
+
+  .botaoIniciar {
+    background-color: #14B0F2;
   }
 </style>
 <?php endwhile; ?>
