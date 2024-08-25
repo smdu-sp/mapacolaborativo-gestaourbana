@@ -12,7 +12,7 @@ var tooltips = {
   35: "Implantar mobiliário urbano",
   36: "Implantar elementos de segurança viária",
   37: "Implantar melhorias nos acessos e transposições de barreiras físicas",
-  38: "Implantar melhoris no sistema cicloviário",
+  38: "Implantar melhorias no sistema cicloviário",
   39: "Preservar, recuperar e ampliar a cobertura vegetal",
   40: "Restringir a circulação de veículos",
   41: "Incentivar a arte urbana",
@@ -421,18 +421,38 @@ var displayFeatureInfo = function(pixel,evt) {
     console.warn(feature.get('CAMADA'));
     if(feature.get("DADOS_COLAB") == null){
       var rota = feature.get("ROTA");
-      var popupHtml = feature.get('DESCRICAO');
+      var popupHtml = '<p style="margin-top: 0; text-align: left;">'
+      popupHtml += feature.get('DESCRICAO');
+      popupHtml += '</p>'
       if(feature.get('CAMADA') == 1 || feature.get('sg_macro_d') == "EETU"){
-        popupHtml += '<div>'
+        popupHtml += '<div style="display: flex; flex-wrap: wrap; width: 620px;">'
 
         for (const index in imageIconPropsLayer) {
-          popupHtml +=  `<button type="button" title="${tooltips[index]} "style="background: url('${imageIconPropsLayer[index]}'); border: none; width: 40px; height: 40px; border-radius: 50px; cursor: pointer; margin: 5px;" onclick="adicionarPin('${rota}', ${lat}, ${lon}, ${index})"></button>`
+          popupHtml += `
+            <button type="button" id="btn-estrategia-${index}" data-id-opcao="${index}" style="background: transparent; display: flex; flex: 0 0 33.3333%; height: 48px; border: none; cursor: pointer;" onclick="adicionarPin('${rota}', ${lat}, ${lon}, ${index})">
+              <img src=${imageIconPropsLayer[index]}>
+              <span style="text-align: left; margin-left: 6px;">
+                ${tooltips[index]}
+              </span>
+            </button>`
         }
 
         popupHtml += '</div>';
       }
       content.innerHTML = popupHtml;
       overlay.setPosition(coordinate);
+      jQuery("[id^=btn-estrategia]").hover(
+        function() {
+          var id = jQuery(this).attr("data-id-opcao");
+          jQuery("#imgDescritivo").attr("src", `/wp-content/uploads/2024/08/frame-${id}.png`);
+          console.log(id);
+
+          jQuery("#containerDescritivo").removeClass('hidden');
+      
+        }, function() {
+          jQuery("#containerDescritivo").addClass('hidden');
+        }
+      );      
     }
     else {
       setTimeout(function(){
