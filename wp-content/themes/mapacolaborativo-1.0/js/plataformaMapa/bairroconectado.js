@@ -185,6 +185,7 @@ camada1 = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/2016/07/MSP
 // var c_MUC = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2024-03/MUC.kml');
 // var c_MQU = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2024-03/MQU.kml');
 // var c_MEM = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/funcao_social/2024-03/MEM.kml');
+var c_Perimetro = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/perimetro.kml');
 var c_RotaA = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/rota_a.kml');
 var c_RotaB = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/rota_b.kml');
 var c_RotaC = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/rota_c.kml');
@@ -257,6 +258,7 @@ var map = new ol.Map({
     propsLayerIndicados[39],
     propsLayerIndicados[40],
     propsLayerIndicados[41],
+    c_Perimetro,
     camada1,
   ],
   overlays: [overlay],

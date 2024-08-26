@@ -1,11 +1,10 @@
 <?php
 /*
- * Template Name: Bairro Conectado - Terminal Sapopemba
- */
-?>
-<?php
+** Template Name: Bairro Conectado - Terminal Sapopemba
+**/
+
 global $wpdb;
-$results = $wpdb->get_results( "SELECT * FROM bairro_conectado_opcoes");
+$results = $wpdb->get_results( "SELECT * FROM bairro_conectado_opcoes" );
 
 get_header('bairro');
 ?>
@@ -38,6 +37,10 @@ get_header('bairro');
           <div id="containerLegenda">
             <div id="containerSubmenu">
               <ul id="legenda" class="unselectable">
+                <li id="perimetro">
+                  <icone style="background-color: #8600DE;" class="iconCircle"></icone>
+                  <label>Perímetro do Projeto</label>
+                </li>
                 <li id="rotaA">
                   <icone style="background-color: #f94668;" class="iconCircle"></icone>
                   <label>Rota A</label>
@@ -155,7 +158,7 @@ get_header('bairro');
 
   .tituloLegenda {
     width: 250px;
-    background-color: #14B0F2;
+    background-color: #8600DE;
     display: inline-block;
     color: #FFF;
     padding: 10px 20px;
@@ -223,7 +226,8 @@ get_header('bairro');
   }
 
   .botaoIniciar {
-    background-color: #14B0F2;
+    /* background-color: #14B0F2; */
+    background-color: #8600DE;
   }
 
   .botaoEnviar {
