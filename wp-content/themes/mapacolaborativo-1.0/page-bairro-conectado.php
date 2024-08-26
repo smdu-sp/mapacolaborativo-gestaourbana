@@ -25,12 +25,6 @@ get_header('bairro');
         <div id="elementClickOpenPopUp" class="elementClickOpenPopUp popmake-134"></div>
         <div id="elementClickOpenPopUp1" class="elementClickOpenPopUp popmake-163"></div>
         <div id="sidenav">
-          <!-- <div class="tituloLegenda BotoesMenu popmake-351" id="botoesMenuPlataforma1">
-              <label class="unselectable">Apresentação</label>
-          </div>
-          <div class="tituloLegenda BotoesMenu popmake-353" id="botoesMenuPlataforma3">
-              <label class="unselectable">Participe</label>
-          </div> -->
           <div class="tituloLegenda BotoesMenu" id="botoesMenuPlataforma4">
               <label class="unselectable">Legenda</label>
           </div>
