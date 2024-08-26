@@ -27,8 +27,6 @@ var propsLayerIndicados = {};
 for (let index = 28; index <= 41; index++) {
   imageIconPropsLayer[index] = `../wp-content/uploads/2024/08/${index}.png`;
   propsLayerIndicados[index] = platMapAPI.createCustomVectorLayer('rgba(255, 255, 255, 1)', imageIconPropsLayer[index], 1, 1);
-  console.log(imageIconPropsLayer);
-  console.log(propsLayerIndicados);
 }
 
 var isAjaxLoaded = false;
@@ -234,7 +232,7 @@ var view = new ol.View({
   center: [-5176477.419686802, -2706442.884678815],
   zoom: 15.5,
   minZoom: 11.5,
-  maxZoom: 19.5
+  maxZoom: 19
 });
 var map = new ol.Map({
   layers: [

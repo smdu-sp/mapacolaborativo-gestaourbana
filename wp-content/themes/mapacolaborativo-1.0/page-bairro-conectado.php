@@ -7,7 +7,7 @@
 global $wpdb;
 $results = $wpdb->get_results( "SELECT * FROM bairro_conectado_opcoes");
 
-get_header();
+get_header('bairro');
 ?>
 <link rel="stylesheet" href="https://openlayers.org/en/v3.20.1/css/ol.css" type="text/css">
 <link rel="stylesheet" type="text/css" href="<?php echo bloginfo('template_url'); ?>/css/style-mapa-colaborativo.css"/>
@@ -18,13 +18,7 @@ get_header();
 <div id="news-inner">
   <div class="left" style="width:100%;">
     <div class="inner floatComment" style="margin: 0px">
-      <br/>
-      <br/>
-      <div id="display">
-        <center><div class="prHeaderInfo">Clique em algum ponto do mapa demarcado para obter informações da área.</div></center>
-        <div style="padding: 2px;">&nbsp;</div>
-        <center><div id="map" style="height: 800px; "></div></center>
-        <div id="info"></div>
+      <div id="display"><div id="map" style="height: calc(100vh - 129px); max-width: 1436px; margin: 0 auto; box-sizing: border-box; float: none;"></div>
         <div id="popup" class="ol-popup">
           <div id="popup-content"></div>
           <div class="popup-closer-iframe red" onclick="popupClose();"></div>
@@ -32,13 +26,13 @@ get_header();
         <div id="elementClickOpenPopUp" class="elementClickOpenPopUp popmake-134"></div>
         <div id="elementClickOpenPopUp1" class="elementClickOpenPopUp popmake-163"></div>
         <div id="sidenav">
-          <!-- <div class="BotaoApoiarVermelho BotoesMenu popmake-351" id="botoesMenuPlataforma1">
+          <!-- <div class="tituloLegenda BotoesMenu popmake-351" id="botoesMenuPlataforma1">
               <label class="unselectable">Apresentação</label>
           </div>
-          <div class="BotaoApoiarVermelho BotoesMenu popmake-353" id="botoesMenuPlataforma3">
+          <div class="tituloLegenda BotoesMenu popmake-353" id="botoesMenuPlataforma3">
               <label class="unselectable">Participe</label>
           </div> -->
-          <div class="BotaoApoiarVermelho BotoesMenu" id="botoesMenuPlataforma4">
+          <div class="tituloLegenda BotoesMenu" id="botoesMenuPlataforma4">
               <label class="unselectable">Legenda</label>
           </div>
           <div id="containerLegenda">
@@ -144,8 +138,18 @@ get_header();
     margin: 0;
   }
 
-  .BotaoApoiarVermelho {
+  .tituloLegenda {
     width: 250px;
+    background-color: #14B0F2;
+    display: inline-block;
+    color: #FFF;
+    padding: 10px 20px;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-size: 12px;
+    font-weight: bold;
+    border: 20px;
+    max-width: 350px;
   }
 
   div#sidenav {
@@ -198,7 +202,11 @@ get_header();
   .botaoIniciar {
     background-color: #14B0F2;
   }
+
+  @media (min-width: 1436px) {
+    div#sidenav {
+      left: calc((100vw - 1436px) / 2);
+    }
+  }
 </style>
 <?php endwhile; ?>
-
-<?php get_footer(); ?>
