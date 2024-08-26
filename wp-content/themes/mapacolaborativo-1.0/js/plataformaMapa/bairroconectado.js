@@ -82,7 +82,7 @@ jQuery.ajax({
  * 
  */
 function getLogradouroLatLon(element,lat,lon){
- showLoading(true);  
+ showLoading(true);
  jQuery.ajax({
    type: 'GET',
    url: 'https://nominatim.openstreetmap.org/reverse',
@@ -121,26 +121,6 @@ jQuery("#botoesMenuPlataforma3").on("mouseover",function(){
 jQuery("[id^=rota]").on("click",function(){
     var id = jQuery(this).attr("id");
     zoomRota(id);
-});
-jQuery("#botaoEnviarMapa").on("click", async function() {
-    fd = new FormData();
-    fd.append("escolhas", JSON.stringify(escolhas));
-
-    try {
-      const res = await fetch(
-        '/enviar-mapa',
-        {
-          method: 'POST',
-          body: fd,
-        },
-      );
-
-      const resData = await res.json();
-
-      console.log(resData);
-    } catch (err) {
-      console.error(err);
-    }
 });
 // jQuery("#toggleCamadaIndicados").on("click",function(){
 //     platMapAPI.showHideCamada(propsLayerIndicados,jQuery("#toggleCamadaIndicados p"),"Exibir Imóveis Indicados","Imóveis Indicados");
@@ -528,4 +508,45 @@ function zoomRota(rota) {
 
 function iniciarFase() {
   jQuery(".modalContainer").addClass("hidden");
+  jQuery("#modalInstrucoes").addClass("hidden");
+  jQuery("#modalEnviar").addClass("hidden");
+  jQuery("#modal2aFase").addClass("hidden");
+}
+
+function modalEnviar() {  
+  jQuery(".modalContainer").removeClass("hidden");
+  jQuery("#modalEnviar").removeClass("hidden");
+  setTimeout(() => {
+    enviarFormulario();
+  }, 5000)
+}
+
+function modal2aFase() {
+  jQuery(".modalContainer").removeClass("hidden");
+  jQuery("#modal2aFase").removeClass("hidden");  
+}
+
+function proximaFase() {
+  window.location.href = "/bairro-conectado-terminal-sapopemba-fase-2/"
+}
+
+async function enviarFormulario() {
+  fd = new FormData();
+  fd.append("escolhas", JSON.stringify(escolhas));
+
+  try {
+    const res = await fetch(
+      '/enviar-mapa',
+      {
+        method: 'POST',
+        body: fd,
+      },
+    );
+
+    const resData = await res.json();
+
+    console.log(resData);
+  } catch (err) {
+    console.error(err);
+  }
 }

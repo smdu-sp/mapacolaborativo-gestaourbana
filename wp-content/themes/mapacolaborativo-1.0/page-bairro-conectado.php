@@ -74,28 +74,44 @@ get_header('bairro');
         </div>
         <div class="modalContainer">
           <div class="modal">
-            <p style="margin-top: 0;"><b>Queremos saber quais ações de melhoria você gostaria de sugerir em cada rota.</b></p>
-            <div style="display: flex; flex-wrap: wrap; width: 620px;">
-              <?php
-              foreach ($results as $linha) {
-              ?>
-                <div style="background: transparent; display: flex; flex: 0 0 33.3333%; height: 54px; border: none; padding: 5px 5px; box-sizing: border-box">
-                  <img src="../wp-content/uploads/2024/08/<?= $linha->id_opcao ?>.png">
-                  <span style="text-align: left; margin-left: 6px;">
-                    <?= $linha->descricao ?>
-                  </span>
+            <div id="modalInstrucoes">
+              <p style="margin-top: 0;"><b>Queremos saber quais ações de melhoria você gostaria de sugerir em cada rota.</b></p>
+              <div style="display: flex; flex-wrap: wrap; width: 620px;">
+                <?php
+                foreach ($results as $linha) {
+                ?>
+                  <div style="background: transparent; display: flex; flex: 0 0 33.3333%; height: 54px; border: none; padding: 5px 5px; box-sizing: border-box">
+                    <img src="../wp-content/uploads/2024/08/<?= $linha->id_opcao ?>.png">
+                    <span style="text-align: left; margin-left: 6px;">
+                      <?= $linha->descricao ?>
+                    </span>
+                </div>
+                <?php
+                }
+                ?>
               </div>
-              <?php
-              }
-              ?>
+              <p><b>Passo 1:</b><br>Escolha uma rota no mapa.</p>
+              <p><b>Passo 2:</b><br>Clique no mapa para marcar onde você acha que as melhorias devem ser feitas.</p>
+              <p><b>Passo 3:</b><br>Confirme sua participação clicando em "Enviar".</p>
+              <div class="centralizar">
+                <button class="botoes botaoIniciar" type="button" onclick="iniciarFase()">Começar</button>
+              </div>
             </div>
-            <p><b>Passo 1:</b><br>Escolha uma rota no mapa.</p>
-            <p><b>Passo 2:</b><br>Clique no mapa para marcar onde você acha que as melhorias devem ser feitas.</p>
-            <p><b>Passo 3:</b><br>Confirme sua participação clicando em "Enviar".</p>
-            <div class="centralizar">
-            <button class="botoes botaoIniciar" type="button" onclick="iniciarFase()">Começar</button>
+            <div id="modalEnviar" class="hidden">
+              <p id="mensagemEnviar"><b>Enviando contribuição...</b></p>
+            </div>
+            <div id="modal2aFase" class="hidden">
+              <p style="margin-top: 0;"><b>Tem certeza que deseja prosseguir para a próxima fase sem enviar contribuição?</b></p>
+              <div class="centralizar">
+                <button type="button" class="botoes botaoIniciar" onclick="proximaFase()">Prosseguir</button>
+                <button type="button" class="botoes botaoCancelar" onclick="iniciarFase()">Cancelar</button>
+              </div>
             </div>
           </div>
+        </div>
+        <div id="containerBotaoEnviar">
+          <button class="botoes botaoEnviar" type="button" onclick="modalEnviar()">Enviar 1ª Fase</button>
+          <button class="botoes botaoIniciar" type="button" onclick="modal2aFase()">Ir à 2ª Fase</button>
         </div>
       </div>
     </div>
@@ -199,8 +215,31 @@ get_header('bairro');
     border-radius: 6px;
   }
 
+  .botoes:nth-child(n+2) {
+    margin-left: 20px;
+  }
+
   .botaoIniciar {
     background-color: #14B0F2;
+  }
+
+  .botaoEnviar {
+    background-color: #32E688;
+  }
+
+  .botaoCancelar {
+    background-color: #888;
+  }
+
+  #containerBotaoEnviar {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 50px;
+    padding: 20px;
+    z-index: 1;
+    background-color: #fff;
+    border-radius: 10px;
   }
 
   @media (min-width: 1436px) {
