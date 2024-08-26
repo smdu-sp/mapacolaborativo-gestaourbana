@@ -61,10 +61,6 @@ get_header('bairro');
                   <?php
                 }
                 ?>
-                <li id="botoes">
-                  <button id="botaoEnviarMapa" type="button">Enviar</button>
-                  <button type="button">Cancelar</button>
-                </li>
               </ul>
             </div>
             <div id="containerDescritivo" class="hidden">
@@ -99,6 +95,9 @@ get_header('bairro');
             </div>
             <div id="modalEnviar" class="hidden">
               <p id="mensagemEnviar"><b>Enviando contribuição...</b></p>
+              <div id="botoesEnviar" class="centralizar hidden">
+                <button type="button" class="botoes botaoCancelar" onclick="iniciarFase()">Voltar</button>
+              </div>
             </div>
             <div id="modal2aFase" class="hidden">
               <p style="margin-top: 0;"><b>Tem certeza que deseja prosseguir para a próxima fase sem enviar contribuição?</b></p>
@@ -110,7 +109,7 @@ get_header('bairro');
           </div>
         </div>
         <div id="containerBotaoEnviar">
-          <button class="botoes botaoEnviar" type="button" onclick="modalEnviar()">Enviar 1ª Fase</button>
+          <button class="botoes botaoEnviar" type="button" onclick="modalEnviar()" disabled>Enviar 1ª Fase</button>
           <button class="botoes botaoIniciar" type="button" onclick="modal2aFase()">Ir à 2ª Fase</button>
         </div>
       </div>
@@ -215,6 +214,10 @@ get_header('bairro');
     border-radius: 6px;
   }
 
+  .botoes:disabled {
+    opacity: 0.65;
+  }
+
   .botoes:nth-child(n+2) {
     margin-left: 20px;
   }
@@ -225,6 +228,11 @@ get_header('bairro');
 
   .botaoEnviar {
     background-color: #32E688;
+  }
+
+  .botaoEnviar:disabled {
+    background-color: #28a745;
+    color: #aaa;
   }
 
   .botaoCancelar {

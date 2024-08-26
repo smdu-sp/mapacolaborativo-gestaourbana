@@ -373,6 +373,11 @@ var escolhas = [];
 function adicionarPin(rota, lat, lon, opcao) {
   var idPin = escolhas.length + 1;
   escolhas.push([rota, lat, lon, opcao, idPin]);
+
+  if (escolhas.length > 0) {
+    jQuery("#containerBotaoEnviar .botaoEnviar").removeAttr("disabled");
+  }
+
   const infoFeature = {
     latlon: {
       longitude: lon,
@@ -516,6 +521,8 @@ function iniciarFase() {
 function modalEnviar() {  
   jQuery(".modalContainer").removeClass("hidden");
   jQuery("#modalEnviar").removeClass("hidden");
+  jQuery("#botoesEnviar").addClass("hidden");
+  jQuery("#mensagemEnviar").html("<b>Enviando contribuição...</b>")
   setTimeout(() => {
     enviarFormulario();
   }, 5000)
@@ -545,7 +552,12 @@ async function enviarFormulario() {
 
     const resData = await res.json();
 
-    console.log(resData);
+    if (resData.status == 200) {
+      proximaFase();
+    } else {
+      jQuery("#mensagemEnviar").html("<b>Erro no envio da contribuição, por favor tente novamente mais tarde.</b>");
+      jQuery("#botoesEnviar").removeClass("hidden");
+    }
   } catch (err) {
     console.error(err);
   }

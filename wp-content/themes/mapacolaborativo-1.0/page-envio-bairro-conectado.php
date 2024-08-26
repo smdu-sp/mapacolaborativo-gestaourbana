@@ -8,7 +8,7 @@ global $wpdb;
 $tableEnvios = 'bairro_conectado_envios';
 $tableContribuicoes = 'bairro_conectado_contribuicoes';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['escolhas'])) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['escolhas']) && count(json_decode(stripslashes($_POST['escolhas']), true)) > 0) {
   $escolhas = json_decode(stripslashes($_POST['escolhas']), true);
   $ip = getRealUserIP();
 
@@ -32,7 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['escolhas'])) {
   echo json_encode(['status' => 200]);
 
 } else {
-  echo json_encode((object)[]);
+  http_response_code(500);
+  echo json_encode(['status' => 500]);
 }
 
 function getRealUserIp(){
