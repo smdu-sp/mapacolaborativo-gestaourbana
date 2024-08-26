@@ -268,15 +268,6 @@ map.on('singleclick', function(evt) {
   displayFeatureInfo(pixelClick,evt);
   var hdms = ol.coordinate.toStringHDMS(ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326'));
   var feature = getFeatureAtPixelX(pixelClick,map);
-  if(feature){
-    var lonlat = ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326');
-    var lon = lonlat[0];
-    var lat = lonlat[1];
-    var lograField = document.getElementsByName('logradouro');
-    getLogradouroLatLon(lograField,lat,lon)
-    jQuery("#pinpointLatitude").val(lat);
-    jQuery("#pinpointLongitude").val(lon);
-  }
   var duration = 2000;
   var start = +new Date();
   var pan = ol.animation.pan({
@@ -347,7 +338,7 @@ async function enviarFormulario() {
 
   try {
     const res = await fetch(
-      '/enviar-mapa',
+      '/enviar-bairro',
       {
         method: 'POST',
         body: fd,
