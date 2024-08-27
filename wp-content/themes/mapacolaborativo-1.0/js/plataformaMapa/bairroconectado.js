@@ -92,8 +92,8 @@ function popupClose() {
 * CONFIGURA MAPA PARA EXIBIÇÃO
 */
 var view = new ol.View({
-  center: [-5176477.419686802, -2706442.884678815],
-  zoom: 15.5,
+  center: [-5176476.419686802, -2706742.884678815],
+  zoom: 15,
   minZoom: 11.5,
   maxZoom: 19
 });
@@ -199,7 +199,6 @@ function adicionarPin(rota, lat, lon, opcao) {
 var displayFeatureInfo = function(pixel,evt) {
   var feature = getFeatureAtPixelX(pixel,map);
   var coordinate = evt.coordinate;
-  console.log(coordinate);
   var lonlat = ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326');
   var lon = lonlat[0];
   var lat = lonlat[1];
@@ -220,7 +219,7 @@ var displayFeatureInfo = function(pixel,evt) {
 
         for (const index in imageIconPropsLayer) {
           popupHtml += `
-            <button type="button" id="btn-estrategia-${index}" data-id-opcao="${index}" style="background: transparent; display: flex; flex: 0 0 33.3333%; height: 48px; border: none; cursor: pointer;" onclick="adicionarPin('${rota}', ${lat}, ${lon}, ${index})">
+            <button type="button" id="btn-estrategia-${index}" data-id-opcao="${index}" style="background: transparent; display: flex; flex: 0 0 33.3333%; height: 48px; border: none; cursor: pointer; align-items: center;" onclick="adicionarPin('${rota}', ${lat}, ${lon}, ${index})">
               <img src=${imageIconPropsLayer[index]}>
               <span style="text-align: left; margin-left: 6px;">
                 ${tooltips[index]}
@@ -236,7 +235,6 @@ var displayFeatureInfo = function(pixel,evt) {
         function() {
           var id = jQuery(this).attr("data-id-opcao");
           jQuery("#imgDescritivo").attr("src", `/wp-content/uploads/2024/08/frame-${id}.png`);
-          console.log(id);
 
           jQuery("#containerDescritivo").removeClass('hidden');
       
@@ -289,17 +287,33 @@ map.getView().on('propertychange', function(e){
 function zoomRota(rota) {
   let rotas = {
     rotaA: {
-      center: [-5176691.927215281, -2705956.4424095075],
-      zoom: 16,    
+      center: [-5176691.927215281, -2705986.4424095075],
+      zoom: 16,
+      camada: c_RotaA,
     },
     rotaB: {
-      center: [-5175972.398025264, -2706145.6144031277],
-      zoom: 16.5,    
+      center: [-5175972.398025264, -2706185.6144031277],
+      zoom: 17,
+      camada: c_RotaB,
     },
     rotaC: {
-      center: [-5176350.742012504, -2707034.0471588774],
-      zoom: 16.5,    
+      center: [-5176350.742012504, -2707134.0471588774],
+      zoom: 16.2,
+      camada: c_RotaC,
     },
+    rotaPerimetro: {
+      center: [-5176476.419686802, -2706742.884678815],
+      zoom: 15,
+      camada: c_Perimetro,
+    },
+  }
+
+  for (const item of Object.keys(rotas)) {
+    if (item !== rota && item != "rotaPerimetro" && rota !== "rotaPerimetro") {
+      rotas[item]["camada"].setVisible(false);
+    } else {
+      rotas[item]["camada"].setVisible(true);
+    }
   }
 
   view.setZoom(rotas[rota]["zoom"]);

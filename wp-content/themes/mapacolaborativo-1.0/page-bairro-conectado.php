@@ -31,21 +31,21 @@ get_header('bairro');
           <div id="containerLegenda">
             <div id="containerSubmenu">
               <ul id="legenda" class="unselectable">
-                <li id="perimetro">
-                  <icone style="background-color: #8600DE;" class="iconCircle"></icone>
+                <li id="rotaPerimetro">
+                  <icone style="background-color: #000;" class="iconCircle"></icone>
                   <label>Perímetro do Projeto</label>
                 </li>
                 <li id="rotaA">
                   <icone style="background-color: #f94668;" class="iconCircle"></icone>
-                  <label>Rota A</label>
+                  <label>Rota A (clique para selecionar)</label>
                 </li>
                 <li id="rotaB">
                   <icone style="background-color: #0a3299;" class="iconCircle"></icone>
-                  <label>Rota B</label>
+                  <label>Rota B (clique para selecionar)</label>
                 </li>
                 <li id="rotaC">
                   <icone style="background-color: #ed7d31;" class="iconCircle"></icone>
-                  <label>Rota C</label>
+                  <label>Rota C (clique para selecionar)</label>
                 </li>
                 <?php
                 foreach ($results as $linha) {
@@ -73,12 +73,12 @@ get_header('bairro');
                 <?php
                 foreach ($results as $linha) {
                 ?>
-                  <div style="background: transparent; display: flex; flex: 0 0 33.3333%; height: 54px; border: none; padding: 5px 5px; box-sizing: border-box">
+                  <div style="background: transparent; display: flex; flex: 0 0 33.3333%; height: 54px; border: none; padding: 5px 5px; box-sizing: border-box; align-items: center;">
                     <img src="../wp-content/uploads/2024/08/<?= $linha->id_opcao ?>.png">
                     <span style="text-align: left; margin-left: 6px;">
                       <?= $linha->descricao ?>
                     </span>
-                </div>
+                  </div>
                 <?php
                 }
                 ?>
