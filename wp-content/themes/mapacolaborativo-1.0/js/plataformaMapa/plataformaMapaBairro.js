@@ -42,6 +42,39 @@
 			style: stylePointLayer
                     });
     };
+    PlatMap.prototype.createCustomVectorLayerFromKML = function(url,imageColor,imageIcon,opacity,scale){
+        var iconStyle = new ol.style.Icon({
+            anchor: [0.5, 0.5],
+            anchorXUnits: 'fraction',
+            anchorYUnits: 'fraction',
+            opacity: opacity,
+            scale: scale,
+            color:  imageColor,         
+            src: imageIcon
+          });
+         stylePointLayer = new ol.style.Style({
+            fill: new ol.style.Fill({
+              color: 'rgba(128, 159, 255, 0.3)'
+            }),
+            stroke: new ol.style.Stroke({
+              color: imageColor,
+              width: 1
+            }),
+            image: iconStyle
+          });
+        return new ol.layer.Vector({
+          source: new ol.source.Vector({
+            url: url,
+            format: new ol.format.KML({
+              extractStyles: false,
+              extractAttributes: true,
+              maxDepth: 2
+            })
+          }),
+          /** ESTILO DAS FEATURES PROPOSTAS */
+          style: stylePointLayer
+      });
+    };
     PlatMap.prototype.createVectorLayerFromKML = function(url){
           var camada = new ol.layer.Vector({
             source: new ol.source.Vector({

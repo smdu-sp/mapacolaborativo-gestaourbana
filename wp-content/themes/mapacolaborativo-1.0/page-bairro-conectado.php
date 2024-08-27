@@ -47,6 +47,18 @@ get_header('bairro');
                   <icone style="background-color: #ed7d31;" class="iconCircle"></icone>
                   <label>Rota C (clique para selecionar)</label>
                 </li>
+                <li id="terminalSapopemba">
+                  <img src="../wp-content/uploads/2024/08/13.png" alt="Ícone terminal Sapopemba">
+                  <label>Terminal Sapopemba</label>
+                </li>
+                <li id="hospitais">
+                  <img src="../wp-content/uploads/2024/08/11.png" alt="Ícone hospitais">
+                  <label>Hospitais</label>
+                </li>
+                <li id="ceus">
+                  <img src="../wp-content/uploads/2024/08/12.png" alt="Ícone CEUs">
+                  <label>CEUs</label>
+                </li>
                 <?php
                 foreach ($results as $linha) {
                   continue;
