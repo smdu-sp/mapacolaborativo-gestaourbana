@@ -204,7 +204,7 @@ wp_head();
 
 		@media (min-width: 1436px) {
 			div#sidenav {
-			left: calc((100vw - 1436px) / 2);
+				left: calc((100vw - 1436px) / 2) !important;
 			}
 		}
 	</style>

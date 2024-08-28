@@ -1,23 +1,6 @@
 /**
 * VARIÁVEIS PARA MANIPULAR AS FEATURES DE COLABORAÇÕES
 */
-var tooltips = {
-  28: "Implantar melhorias nas calçadas",
-  29: "Implantar melhorias nas escadas",
-  30: "Implantar melhorias nas ruas sem saída, vielas e travessas",
-  31: "Melhorar a microdrenagem urbana",
-  32: "Melhorar a iluminação pública",
-  33: "Qualificar praças e áreas de lazer",
-  34: "Implantar refúgios climáticos",
-  35: "Implantar mobiliário urbano",
-  36: "Implantar elementos de segurança viária",
-  37: "Implantar melhorias nos acessos e transposições de barreiras físicas",
-  38: "Implantar melhorias no sistema cicloviário",
-  39: "Preservar, recuperar e ampliar a cobertura vegetal",
-  40: "Restringir a circulação de veículos",
-  41: "Incentivar a arte urbana",
-}
-
 var contribuicoesEscadarias = [];
 
 for (let indexEscadaria = 1; indexEscadaria <= 10; indexEscadaria++) {
@@ -34,41 +17,16 @@ console.log(contribuicoesEscadarias)
 var featuresPropostas,stylePointLayer;
 jQuery(".tituloPlataforma").html("Bairro Conectado: Terminal Sapopemba");
 
-var imageIconPropsLayer = {};
-var propsLayerIndicados = {};
-
-for (let index = 28; index <= 41; index++) {
-  imageIconPropsLayer[index] = `../wp-content/uploads/2024/08/${index}.png`;
-  propsLayerIndicados[index] = platMapAPI.createCustomVectorLayer('rgba(255, 255, 255, 1)', imageIconPropsLayer[index], 1, 1);
-}
-
 var isAjaxLoaded = false;
 var isHidden = false;
 /**
 * FUNÇÕES PARA MANIPULAR AS FEATURES DE COLABORAÇÕES
 */
-function clearAllFeatures(mapLayer){
+function clearAllFeatures(mapLayer) {
 	mapLayer.getSource().clear();
 }
 function showLoading(val){
     document.getElementById('loadingMapaColaborativo').style.display = val ? 'block' : 'none';
-}
-
-function objToFeature(infoFeature) {
-  console.log(infoFeature);
-  var lat = parseFloat(infoFeature.latlon.latitude);
-  var lon = parseFloat(infoFeature.latlon.longitude);
-  var index = infoFeature.index;
-  console.log(lat, lon)
-  var featureProposta = new ol.Feature({
-      geometry: new ol.geom.Point(ol.proj.transform([lon, lat], 'EPSG:4326', 'EPSG:3857'))		
-  });
-	featureProposta.set("DADOS_COLAB",infoFeature);
-
-  console.log(index)
-  console.log(propsLayerIndicados[index])
-        
-  propsLayerIndicados[index].getSource().addFeature(featureProposta);
 }
 
 /**
@@ -84,7 +42,7 @@ var c_Perimetro = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bai
 var c_RotaA = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/rota_a_fase_2.kml');
 var c_RotaB = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/rota_b_fase_2.kml');
 var c_RotaC = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/rota_c_fase_2.kml');
-var c_Escadarias = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/escadarias.kml');
+var c_Escadarias = platMapAPI.createDistinctPointLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/escadarias.kml', "../wp-content/uploads/2024/08/icone-escadaria-", "png");
 var c_Hospitais = platMapAPI.createCustomVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/hospitais.kml', 'rgba(255, 255, 255, 1)', '../wp-content/uploads/2024/08/11.png', 1, 1); 
 var c_Ceus = platMapAPI.createCustomVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/ceus.kml', 'rgba(255, 255, 255, 1)', '../wp-content/uploads/2024/08/12.png', 1, 1); 
 var c_TerminalSapopemba = platMapAPI.createCustomVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/terminal_sapopemba.kml', 'rgba(255, 255, 255, 1)', '../wp-content/uploads/2024/08/13.png', 1, 1);
@@ -125,20 +83,6 @@ var map = new ol.Map({
     c_RotaA,
     c_RotaB,
     c_RotaC,
-    propsLayerIndicados[28],
-    propsLayerIndicados[29],
-    propsLayerIndicados[30],
-    propsLayerIndicados[31],
-    propsLayerIndicados[32],
-    propsLayerIndicados[33],
-    propsLayerIndicados[34],
-    propsLayerIndicados[35],
-    propsLayerIndicados[36],
-    propsLayerIndicados[37],
-    propsLayerIndicados[38],
-    propsLayerIndicados[39],
-    propsLayerIndicados[40],
-    propsLayerIndicados[41],
     c_Hospitais,
     c_Ceus,
     c_TerminalSapopemba,
@@ -148,21 +92,6 @@ var map = new ol.Map({
   overlays: [overlay],
   target: 'map',
   view: view
-});
-//popup Imóvel
-var vectorLayerImovel = platMapAPI.createCustomVectorLayer('rgba(224, 8, 21, 1)',imageIconPropsLayer[28],0.95,0.7);
-var mapImovel = new ol.Map({
-  layers: [
-        new ol.layer.Tile({
-          source: new ol.source.OSM()
-        }),vectorLayerImovel
-  ],
-  view: new ol.View({
-        center: [-5191207.638373509,-2698731.105121977],
-        zoom: 10,
-        minZoom: 10,
-        maxZoom: 30
-    })
 });
 
 /**
@@ -198,27 +127,6 @@ function openPopupForm(){
 
 var escolhas = [];
 
-function adicionarPin(rota, lat, lon, opcao) {
-  var idPin = escolhas.length + 1;
-  escolhas.push([rota, lat, lon, opcao, idPin]);
-
-  if (escolhas.length > 0) {
-    jQuery("#containerBotaoEnviar .botaoEnviar").removeAttr("disabled");
-  }
-
-  const infoFeature = {
-    latlon: {
-      longitude: lon,
-      latitude: lat,
-    },
-    index: opcao,
-    id: idPin,
-  }
-
-  objToFeature(infoFeature);
-  popupClose();
-}
-
 var displayFeatureInfo = function(pixel,evt) {
   var feature = getFeatureAtPixelX(pixel,map);
   var coordinate = evt.coordinate;
@@ -238,21 +146,6 @@ var displayFeatureInfo = function(pixel,evt) {
       var popupHtml = '<p style="margin-top: 0; text-align: left;">'
       popupHtml += feature.get('DESCRICAO');
       popupHtml += '</p>'
-      if(feature.get('CAMADA') == 1 || feature.get('sg_macro_d') == "EETU"){
-        popupHtml += '<div style="display: flex; flex-wrap: wrap; width: 620px;">'
-
-        for (const index in imageIconPropsLayer) {
-          popupHtml += `
-            <button type="button" id="btn-estrategia-${index}" data-id-opcao="${index}" style="background: transparent; display: flex; flex: 0 0 33.3333%; height: 48px; border: none; cursor: pointer;" onclick="adicionarPin('${rota}', ${lat}, ${lon}, ${index})">
-              <img src=${imageIconPropsLayer[index]}>
-              <span style="text-align: left; margin-left: 6px;">
-                ${tooltips[index]}
-              </span>
-            </button>`
-        }
-
-        popupHtml += '</div>';
-      }
       content.innerHTML = popupHtml;
       overlay.setPosition(coordinate);
       jQuery("[id^=btn-estrategia]").hover(

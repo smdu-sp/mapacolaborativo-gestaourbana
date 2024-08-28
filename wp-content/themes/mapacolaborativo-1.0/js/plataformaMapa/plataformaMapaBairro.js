@@ -75,6 +75,36 @@
           style: stylePointLayer
       });
     };
+    PlatMap.prototype.createDistinctPointLayerFromKML = function(url,iconBaseUrl,extension){
+      function iconSrcFunction(feature, iconBaseUrl, extension) {
+        var id = feature.get("id");
+        return `${iconBaseUrl}${id}.${extension}`
+      }
+
+      var styleFunction = function(feature) {
+        return new ol.style.Style({
+          image: new ol.style.Icon({
+            anchor: [0.5, 0.5],
+            anchorXUnits: 'fraction',
+            anchorYUnits: 'fraction',
+            src: iconSrcFunction(feature, iconBaseUrl, extension) // Pass the feature to iconSrcFunction
+          })
+        });
+      };
+
+      return new ol.layer.Vector({
+        source: new ol.source.Vector({
+          url: url,
+          format: new ol.format.KML({
+            extractStyles: false,
+            extractAttributes: true,
+            maxDepth: 2
+          })
+        }),
+        /** ESTILO DAS FEATURES PROPOSTAS */
+        style: styleFunction
+      });
+    };
     PlatMap.prototype.createVectorLayerFromKML = function(url){
           var camada = new ol.layer.Vector({
             source: new ol.source.Vector({

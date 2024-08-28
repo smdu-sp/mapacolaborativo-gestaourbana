@@ -1,7 +1,7 @@
 <?php
 /*
-** Template Name: Bairro Conectado - Terminal Sapopemba
-**/
+ * Template Name: Bairro Conectado Fase 2 - Terminal Sapopemba
+ */
 
 global $wpdb;
 $results = $wpdb->get_results( "SELECT * FROM bairro_conectado_fase2_opcoes" );
