@@ -18,6 +18,19 @@ var tooltips = {
   41: "Incentivar a arte urbana",
 }
 
+var contribuicoesEscadarias = [];
+
+for (let indexEscadaria = 1; indexEscadaria <= 10; indexEscadaria++) {
+  const obj = {
+    id: indexEscadaria,
+    escolhas: new Set(),
+  }
+
+  contribuicoesEscadarias.push(obj);
+}
+
+console.log(contribuicoesEscadarias)
+
 var featuresPropostas,stylePointLayer;
 jQuery(".tituloPlataforma").html("Bairro Conectado: Terminal Sapopemba");
 
@@ -66,14 +79,17 @@ jQuery("[id^=rota]").on("click",function(){
     zoomRota(id);
 });
 
-var camada1 = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/MSP_Contorno_bairro_conectado.kml');
-var c_Perimetro = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/perimetro.kml');
-var c_RotaA = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/rota_a.kml');
-var c_RotaB = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/rota_b.kml');
-var c_RotaC = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/rota_c.kml');
+var camada1 = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/MSP_Contorno_bairro_conectado_fase_2.kml');
+var c_Perimetro = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/perimetro_fase_2.kml');
+var c_RotaA = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/rota_a_fase_2.kml');
+var c_RotaB = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/rota_b_fase_2.kml');
+var c_RotaC = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/rota_c_fase_2.kml');
+var c_Escadarias = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/escadarias.kml');
 var c_Hospitais = platMapAPI.createCustomVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/hospitais.kml', 'rgba(255, 255, 255, 1)', '../wp-content/uploads/2024/08/11.png', 1, 1); 
 var c_Ceus = platMapAPI.createCustomVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/ceus.kml', 'rgba(255, 255, 255, 1)', '../wp-content/uploads/2024/08/12.png', 1, 1); 
 var c_TerminalSapopemba = platMapAPI.createCustomVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/terminal_sapopemba.kml', 'rgba(255, 255, 255, 1)', '../wp-content/uploads/2024/08/13.png', 1, 1);
+
+c_Escadarias.setZIndex(1);
 
 /* HOVER POPUP */
 var container = document.getElementById('popup');
@@ -105,6 +121,7 @@ var map = new ol.Map({
     new ol.layer.Tile({
       source: new ol.source.OSM()
     }),
+    c_Escadarias,
     c_RotaA,
     c_RotaB,
     c_RotaC,
@@ -160,7 +177,7 @@ function getFeatureAtPixelX(pixel,map){
   if(features.length>1){
     feature = features[features.length-1];
     for(var i = 0;i<features.length;i++){
-      if(features[i].get("DADOS_COLAB") != null){
+      if(features[i].get("Escadaria") != null){
           feature = features[i];
       }
     }
@@ -205,6 +222,7 @@ function adicionarPin(rota, lat, lon, opcao) {
 var displayFeatureInfo = function(pixel,evt) {
   var feature = getFeatureAtPixelX(pixel,map);
   var coordinate = evt.coordinate;
+  console.log(coordinate);
   var lonlat = ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326');
   var lon = lonlat[0];
   var lat = lonlat[1];
@@ -215,7 +233,7 @@ var displayFeatureInfo = function(pixel,evt) {
     console.log(feature.get("DADOS_COLAB"));
     console.log(feature.get("DESCRICAO"));
     console.warn(feature.get('CAMADA'));
-    if(feature.get("DADOS_COLAB") == null){
+    if(feature.get("Escadaria") == null){
       var rota = feature.get("ROTA");
       var popupHtml = '<p style="margin-top: 0; text-align: left;">'
       popupHtml += feature.get('DESCRICAO');
@@ -225,7 +243,7 @@ var displayFeatureInfo = function(pixel,evt) {
 
         for (const index in imageIconPropsLayer) {
           popupHtml += `
-            <button type="button" id="btn-estrategia-${index}" data-id-opcao="${index}" style="background: transparent; display: flex; flex: 0 0 33.3333%; height: 48px; border: none; cursor: pointer; align-items: center;" onclick="adicionarPin('${rota}', ${lat}, ${lon}, ${index})">
+            <button type="button" id="btn-estrategia-${index}" data-id-opcao="${index}" style="background: transparent; display: flex; flex: 0 0 33.3333%; height: 48px; border: none; cursor: pointer;" onclick="adicionarPin('${rota}', ${lat}, ${lon}, ${index})">
               <img src=${imageIconPropsLayer[index]}>
               <span style="text-align: left; margin-left: 6px;">
                 ${tooltips[index]}
@@ -248,14 +266,18 @@ var displayFeatureInfo = function(pixel,evt) {
           jQuery("#containerDescritivo").addClass('hidden');
         }
       );      
-    }
-    else {
-      return;
-      setTimeout(function(){
-        mapImovel.setTarget('mapaImovel');
-        bindValuesImovel(feature.get("DADOS_COLAB"));
-      },1000); 
-      jQuery('#elementClickOpenPopUp1').click();
+    } else {
+      popupClose();
+      for (const obj of contribuicoesEscadarias) {
+        obj['atual'] = false;
+      }
+      idEscadaria = feature.get("id");
+      var objEscadaria = contribuicoesEscadarias.find(x => x["id"] == idEscadaria);
+      objEscadaria['atual'] = true;
+      
+      jQuery("#fotoEscadaria img").attr("src", `../wp-content/uploads/2024/08/Escadaria${idEscadaria}.jpeg`);
+      atualizarEstadoEscolhas();
+      modalEscadarias();
     }
   }
   else {
@@ -331,10 +353,10 @@ function iniciarFase() {
   jQuery(".modalContainer").addClass("hidden");
   jQuery("#modalInstrucoes").addClass("hidden");
   jQuery("#modalEnviar").addClass("hidden");
-  jQuery("#modal2aFase").addClass("hidden");
+  jQuery("#modalEscadarias").addClass("hidden");
 }
 
-function modalEnviar() {  
+function modalEnviar() {
   jQuery(".modalContainer").removeClass("hidden");
   jQuery("#modalEnviar").removeClass("hidden");
   jQuery("#botoesEnviar").addClass("hidden");
@@ -344,29 +366,91 @@ function modalEnviar() {
   }, 5000)
 }
 
-function modal2aFase() {
+function modalEscadarias() {
   jQuery(".modalContainer").removeClass("hidden");
-  jQuery("#modal2aFase").removeClass("hidden");  
+  jQuery("#modalEscadarias").removeClass("hidden");
 }
 
-function proximaFase() {
-  window.location.href = "/bairro-conectado-terminal-sapopemba-fase-2/"
+function selecionarMelhoria(idOpcao) {
+  var objEscadariaAtual = contribuicoesEscadarias.find(x => x["atual"]);
+  var setEscolhas = objEscadariaAtual['escolhas'];
+  toggleMelhoria(setEscolhas, idOpcao);
+
+  atualizarEstadoEscolhas();
+  verificarEscolhas();
+}
+
+function atualizarEstadoEscolhas() {
+  var objEscadariaAtual = contribuicoesEscadarias.find(x => x["atual"]);
+  var setEscolhas = objEscadariaAtual['escolhas'];
+  
+  for (let idOpcao = 1; idOpcao <= 10; idOpcao++) {
+    jQuery(`#melhoria-${idOpcao}`).removeAttr("disabled");
+
+    if (setEscolhas.has(idOpcao)) {
+      jQuery(`#melhoria-${idOpcao}`).addClass("selecionado");
+    } else {
+      jQuery(`#melhoria-${idOpcao}`).removeClass("selecionado");
+    }
+
+    if (setEscolhas.size >= 3) {
+      if (! setEscolhas.has(idOpcao)) {
+        jQuery(`#melhoria-${idOpcao}`).attr("disabled", "disabled")
+      }
+    }
+  }
+}
+
+function verificarEscolhas() {
+  let contribuiu = false;
+  jQuery("#containerBotaoEnviar .botaoEnviar").attr("disabled", "disabled");
+  
+  for (obj of contribuicoesEscadarias) {
+    if (obj["escolhas"].size > 0) {
+      contribuiu = true;
+      continue;
+    }
+  }
+
+  console.log(contribuiu);
+  
+  if (contribuiu) {
+    jQuery("#containerBotaoEnviar .botaoEnviar").removeAttr("disabled");    
+  }
+}
+
+function toggleMelhoria(setEscolhas, idOpcao) {
+  return setEscolhas.delete(idOpcao) || setEscolhas.add(idOpcao);
 }
 
 async function enviarFormulario() {
+  var contribuicoes = [];
+  for (obj of contribuicoesEscadarias) {
+    if (obj["escolhas"].size > 0) {
+      obj["escolhas"] = [...obj["escolhas"]].sort();
+      contribuicoes.push({
+        "id": obj["id"],
+        "escolhas": obj["escolhas"]
+      });
+    }
+  }
   fd = new FormData();
-  fd.append("escolhas", JSON.stringify(escolhas));
+  fd.append("contribuicoes", JSON.stringify(contribuicoes));
+
+  console.log("contribuicoes", contribuicoes);
 
   try {
     const res = await fetch(
-      '/enviar-bairro',
+      '/enviar-bairro-fase-2',
       {
         method: 'POST',
         body: fd,
       },
     );
-
+    
+    return;
     const resData = await res.json();
+
 
     if (resData.status == 200) {
       proximaFase();
