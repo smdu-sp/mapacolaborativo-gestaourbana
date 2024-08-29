@@ -42,13 +42,15 @@ var c_Perimetro = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bai
 var c_RotaA = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/rota_a_fase_2.kml');
 var c_RotaB = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/rota_b_fase_2.kml');
 var c_RotaC = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/rota_c_fase_2.kml');
-var c_Escadarias = platMapAPI.createDistinctPointLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/escadarias_pontos.kml', "../wp-content/uploads/2024/08/icone-escadaria-", "png");
-var c_Hospitais = platMapAPI.createCustomVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/hospitais.kml', 'rgba(255, 255, 255, 1)', '../wp-content/uploads/2024/08/11.png', 1, 1); 
-var c_Ceus = platMapAPI.createCustomVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/ceus.kml', 'rgba(255, 255, 255, 1)', '../wp-content/uploads/2024/08/12.png', 1, 1); 
+var c_Escadarias = platMapAPI.createDistinctPointLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/escadarias_pontos.kml', "../wp-content/uploads/2024/08/icone-escadaria-", "png", 1, 0.75);
+var c_Hospitais = platMapAPI.createCustomVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/hospitais.kml', 'rgba(255, 255, 255, 1)', '../wp-content/uploads/2024/08/11.png', 1, 0.6);
+var c_Ceus = platMapAPI.createCustomVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/ceus.kml', 'rgba(255, 255, 255, 1)', '../wp-content/uploads/2024/08/12.png', 1, 0.6);
 var c_TerminalSapopemba = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/terminal_sapopemba_poligono.kml');
+var c_Metro = platMapAPI.createCustomVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/terminal_sapopemba_ponto.kml', 'rgba(255, 255, 255, 1)', '../wp-content/uploads/2024/08/14.png', 1, 0.6);
 
 c_Escadarias.setZIndex(2);
 c_TerminalSapopemba.setZIndex(1);
+c_Metro.setZIndex(2);
 
 /* HOVER POPUP */
 var container = document.getElementById('popup');
@@ -87,6 +89,7 @@ var map = new ol.Map({
     c_Hospitais,
     c_Ceus,
     c_TerminalSapopemba,
+    c_Metro,
     camada1,
     c_Perimetro,
   ],

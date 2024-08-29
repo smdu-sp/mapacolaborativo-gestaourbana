@@ -80,7 +80,7 @@
           style: stylePointLayer
       });
     };
-    PlatMap.prototype.createDistinctPointLayerFromKML = function(url,iconBaseUrl,extension){
+    PlatMap.prototype.createDistinctPointLayerFromKML = function(url,iconBaseUrl,extension, opacity, scale){
       function iconSrcFunction(feature, iconBaseUrl, extension) {
         var id = feature.get("id");
         return `${iconBaseUrl}${id}.${extension}`
@@ -92,6 +92,8 @@
             anchor: [0.5, 0.5],
             anchorXUnits: 'fraction',
             anchorYUnits: 'fraction',
+            opacity: opacity,
+            scale: scale,
             src: iconSrcFunction(feature, iconBaseUrl, extension) // Pass the feature to iconSrcFunction
           })
         });

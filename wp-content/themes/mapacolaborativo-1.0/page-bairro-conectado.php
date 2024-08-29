@@ -53,6 +53,10 @@ get_header('bairro');
                   <icone style="background-color: #0A3399;" class="iconCircle"></icone>
                   <label>Terminal Sapopemba</label>
                 </li>
+                <li id="metro">
+                  <img src="../wp-content/uploads/2024/08/14.png" alt="Ícone metro">
+                  <label>Estação Sapopemba do Metrô</label>
+                </li>
                 <li id="hospitais">
                   <img src="../wp-content/uploads/2024/08/11.png" alt="Ícone hospitais">
                   <label>Hospitais</label>

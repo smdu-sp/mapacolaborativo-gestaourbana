@@ -50,8 +50,12 @@ get_header('bairro');
                   <label>Rota C (clique para selecionar)</label>
                 </li>
                 <li id="terminalSapopemba">
-                  <img src="../wp-content/uploads/2024/08/13.png" alt="Ícone terminal Sapopemba">
+                  <icone style="background-color: #0A3399;" class="iconCircle"></icone>
                   <label>Terminal Sapopemba</label>
+                </li>
+                <li id="metro">
+                  <img src="../wp-content/uploads/2024/08/14.png" alt="Ícone metro">
+                  <label>Estação Sapopemba do Metrô</label>
                 </li>
                 <li id="escadarias">
                   <img src="../wp-content/uploads/2024/08/icone-escadaria-1.png" alt="Ícone escadarias">
