@@ -61,6 +61,9 @@ function objToFeature(infoFeature) {
 /**
 * BOTÕES LATERAIS
 */
+jQuery("#botaoAjuda").on("click", function() {
+  modalInstrucoes();
+});
 jQuery("[id^=rota]").on("click",function(){
     var id = jQuery(this).attr("id");
     zoomRota(id);
@@ -342,9 +345,14 @@ function iniciarFase() {
   jQuery("#modal2aFase").addClass("hidden");
 }
 
-function modalConfirmarEnvio() {
-  jQuery("#modalConfirmarEnvio").removeClass("hidden");
+function modalInstrucoes() {
   jQuery(".modalContainer").removeClass("hidden");
+  jQuery("#modalInstrucoes").removeClass("hidden");
+}
+
+function modalConfirmarEnvio() {
+  jQuery(".modalContainer").removeClass("hidden");
+  jQuery("#modalConfirmarEnvio").removeClass("hidden");
 }
 
 function modalEnviar() {  

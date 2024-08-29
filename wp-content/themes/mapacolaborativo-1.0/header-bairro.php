@@ -209,11 +209,15 @@ wp_head();
 			}
 		}
 
-		#legenda li, #legenda li * {
+		#legenda li,
+		#legenda li * {
 			cursor: default !important;
 		}
 
-		#legenda li.clicavel, #legenda li.clicavel * {
+		#legenda li.clicavel,
+		#legenda li.clicavel *,
+		#botaoAjuda,
+		#botaoAjuda * {
 			cursor: pointer !important;
 		}
 	</style>
