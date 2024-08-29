@@ -6,27 +6,37 @@
 header('Content-Type: application/json; charset=utf-8');
 global $wpdb;
 $tableEnvios = 'bairro_conectado_envios';
-$tableContribuicoes = 'bairro_conectado_contribuicoes';
+$tableContribuicoes = 'bairro_conectado_contribuicoes_fase_2';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['escolhas']) && count(json_decode(stripslashes($_POST['escolhas']), true)) > 0) {
-  $escolhas = json_decode(stripslashes($_POST['escolhas']), true);
+include_once 'module_ip_address.php';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['contribuicoes']) && count(json_decode(stripslashes($_POST['contribuicoes']), true)) > 0) {
+  $contribuicoes = json_decode(stripslashes($_POST['contribuicoes']), true);
   $ip = getRealUserIP();
 
-  $dataEnvios = ['ip_address' => $ip];
+  $dataEnvios = [
+    'fase' => 2,
+    'ip_address' => $ip
+  ];
 
   $wpdb->insert($tableEnvios, $dataEnvios);
   $idEnvio = $wpdb->insert_id;
 
-  foreach ($escolhas as $arr) {
-    $dataContribuicoes = [
-      'id_envio' => $idEnvio,
-      'rota' => $arr[0],
-      'latitude' => $arr[1],
-      'longitude' => $arr[2],
-      'opcao' => $arr[3],
-    ];
-
-    $wpdb->insert($tableContribuicoes, $dataContribuicoes);
+  foreach ($contribuicoes as $obj) {
+    foreach ($obj['escolhas'] as $escolha) {
+      print_r($obj);
+      $dataContribuicoes = [
+        'id_envio' => $idEnvio,
+        'id_escadaria' => $obj['idEscadaria'],
+        'rota' => $obj['rota'],
+        'escadaria' => $obj['numEscadaria'],
+        'opcao' => $escolha,
+      ];
+  
+      $wpdb->insert($tableContribuicoes, $dataContribuicoes);
+      echo($wpdb->last_error);
+      echo($wpdb->last_query);
+    }
   }
 
   echo json_encode(['status' => 200]);
@@ -35,18 +45,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['escolhas']) && count(j
   http_response_code(500);
   echo json_encode(['status' => 500]);
 }
-
-function getRealUserIp(){
-  if (isset($_SERVER["HTTP_CF_CONNECTING_IP"]) && filter_var($_SERVER["HTTP_CF_CONNECTING_IP"], FILTER_VALIDATE_IP)) {
-    return $_SERVER["HTTP_CF_CONNECTING_IP"];
-  } else if (!empty($_SERVER['HTTP_X_REAL_IP']) && filter_var($_SERVER['HTTP_X_REAL_IP'], FILTER_VALIDATE_IP)) {
-    return $_SERVER['HTTP_X_REAL_IP'];
-  } else if (!empty($_SERVER['HTTP_X_FORWARDED_FOR']) && filter_var($_SERVER['HTTP_X_FORWARDED_FOR'], FILTER_VALIDATE_IP)) {
-    return $_SERVER['HTTP_X_FORWARDED_FOR'];
-  } else if (!empty($_SERVER['REMOTE_ADDR']) && filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP)) {
-    return $_SERVER['REMOTE_ADDR'];
-  }
-  
-  return "1.1.1.1";
-}
-?>

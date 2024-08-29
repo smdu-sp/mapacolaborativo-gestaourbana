@@ -3,9 +3,9 @@
 */
 var contribuicoesEscadarias = [];
 
-for (let indexEscadaria = 1; indexEscadaria <= 10; indexEscadaria++) {
+for (let indexEscadaria = 1; indexEscadaria <= 9; indexEscadaria++) {
   const obj = {
-    id: indexEscadaria,
+    idEscadaria: indexEscadaria,
     escolhas: new Set(),
   }
 
@@ -132,8 +132,6 @@ function openPopupForm(){
     jQuery('#elementClickOpenPopUp').click();
 }
 
-var escolhas = [];
-
 var displayFeatureInfo = function(pixel,evt) {
   var feature = getFeatureAtPixelX(pixel,map);
   var coordinate = evt.coordinate;
@@ -171,9 +169,13 @@ var displayFeatureInfo = function(pixel,evt) {
       for (const obj of contribuicoesEscadarias) {
         obj['atual'] = false;
       }
-      idEscadaria = feature.get("id");
-      var objEscadaria = contribuicoesEscadarias.find(x => x["id"] == idEscadaria);
+      var idEscadaria = feature.get("id");
+      var rotaEscadaria = feature.get("Rota");
+      var numEscadaria = parseInt(feature.get("Escadaria"));
+      var objEscadaria = contribuicoesEscadarias.find(x => x["idEscadaria"] == idEscadaria);
       objEscadaria['atual'] = true;
+      objEscadaria['rota'] = rotaEscadaria;
+      objEscadaria['numEscadaria'] = numEscadaria;
       
       jQuery("#fotoEscadaria img").attr("src", `../wp-content/uploads/2024/08/Escadaria${idEscadaria}.jpeg`);
       atualizarEstadoEscolhas();
@@ -341,8 +343,10 @@ async function enviarFormulario() {
     if (obj["escolhas"].size > 0) {
       obj["escolhas"] = [...obj["escolhas"]].sort();
       contribuicoes.push({
-        "id": obj["id"],
-        "escolhas": obj["escolhas"]
+        "idEscadaria": obj["idEscadaria"],
+        "rota": obj["rota"],
+        "escolhas": obj["escolhas"],
+        "numEscadaria": obj["numEscadaria"],
       });
     }
   }

@@ -4,7 +4,7 @@
  */
 
 global $wpdb;
-$results = $wpdb->get_results( "SELECT * FROM bairro_conectado_fase2_opcoes" );
+$results = $wpdb->get_results( "SELECT * FROM bairro_conectado_opcoes WHERE fase=2" );
 
 get_header('bairro');
 ?>
