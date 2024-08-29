@@ -45,7 +45,7 @@ var c_RotaC = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_
 var c_Escadarias = platMapAPI.createDistinctPointLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/escadarias_pontos.kml', "../wp-content/uploads/2024/08/icone-escadaria-", "png");
 var c_Hospitais = platMapAPI.createCustomVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/hospitais.kml', 'rgba(255, 255, 255, 1)', '../wp-content/uploads/2024/08/11.png', 1, 1); 
 var c_Ceus = platMapAPI.createCustomVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/ceus.kml', 'rgba(255, 255, 255, 1)', '../wp-content/uploads/2024/08/12.png', 1, 1); 
-var c_TerminalSapopemba = platMapAPI.createCustomVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/terminal_sapopemba.kml', 'rgba(255, 255, 255, 1)', '../wp-content/uploads/2024/08/13.png', 1, 1, 'rgba(10, 51, 153, 0.8)');
+var c_TerminalSapopemba = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/terminal_sapopemba_poligono.kml');
 
 c_Escadarias.setZIndex(2);
 c_TerminalSapopemba.setZIndex(1);
