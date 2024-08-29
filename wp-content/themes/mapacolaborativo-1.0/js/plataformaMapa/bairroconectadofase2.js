@@ -42,12 +42,13 @@ var c_Perimetro = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bai
 var c_RotaA = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/rota_a_fase_2.kml');
 var c_RotaB = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/rota_b_fase_2.kml');
 var c_RotaC = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/rota_c_fase_2.kml');
-var c_Escadarias = platMapAPI.createDistinctPointLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/escadarias.kml', "../wp-content/uploads/2024/08/icone-escadaria-", "png");
+var c_Escadarias = platMapAPI.createDistinctPointLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/escadarias_pontos.kml', "../wp-content/uploads/2024/08/icone-escadaria-", "png");
 var c_Hospitais = platMapAPI.createCustomVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/hospitais.kml', 'rgba(255, 255, 255, 1)', '../wp-content/uploads/2024/08/11.png', 1, 1); 
 var c_Ceus = platMapAPI.createCustomVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/ceus.kml', 'rgba(255, 255, 255, 1)', '../wp-content/uploads/2024/08/12.png', 1, 1); 
-var c_TerminalSapopemba = platMapAPI.createCustomVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/terminal_sapopemba.kml', 'rgba(255, 255, 255, 1)', '../wp-content/uploads/2024/08/13.png', 1, 1);
+var c_TerminalSapopemba = platMapAPI.createCustomVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/terminal_sapopemba.kml', 'rgba(255, 255, 255, 1)', '../wp-content/uploads/2024/08/13.png', 1, 1, 'rgba(10, 51, 153, 0.8)');
 
-c_Escadarias.setZIndex(1);
+c_Escadarias.setZIndex(2);
+c_TerminalSapopemba.setZIndex(1);
 
 /* HOVER POPUP */
 var container = document.getElementById('popup');
@@ -232,9 +233,11 @@ function zoomRota(rota) {
 
   for (const item of Object.keys(rotas)) {
     if (item !== rota && item != "rotaPerimetro" && rota !== "rotaPerimetro") {
-      rotas[item]["camada"].setVisible(false);
+      rotas[item]["camada"].setOpacity(0.5);
+      jQuery(`#${item}`).addClass("legLayerInativa");
     } else {
-      rotas[item]["camada"].setVisible(true);
+      rotas[item]["camada"].setOpacity(1);
+      jQuery(`#${item}`).removeClass("legLayerInativa");
     }
   }
 
@@ -245,18 +248,25 @@ function zoomRota(rota) {
 function iniciarFase() {
   jQuery(".modalContainer").addClass("hidden");
   jQuery("#modalInstrucoes").addClass("hidden");
+  jQuery("#modalConfirmarEnvio").addClass("hidden");
   jQuery("#modalEnviar").addClass("hidden");
   jQuery("#modalEscadarias").addClass("hidden");
+}
+
+function modalConfirmarEnvio() {
+  jQuery("#modalConfirmarEnvio").removeClass("hidden");
+  jQuery(".modalContainer").removeClass("hidden");
 }
 
 function modalEnviar() {
   jQuery(".modalContainer").removeClass("hidden");
   jQuery("#modalEnviar").removeClass("hidden");
+  jQuery("#modalConfirmarEnvio").addClass("hidden");
   jQuery("#botoesEnviar").addClass("hidden");
   jQuery("#mensagemEnviar").html("<b>Enviando contribuição...</b>")
   setTimeout(() => {
     enviarFormulario();
-  }, 5000)
+  }, 2000)
 }
 
 function modalEscadarias() {
@@ -304,8 +314,6 @@ function verificarEscolhas() {
       continue;
     }
   }
-
-  console.log(contribuiu);
   
   if (contribuiu) {
     jQuery("#containerBotaoEnviar .botaoEnviar").removeAttr("disabled");    

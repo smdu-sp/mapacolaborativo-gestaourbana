@@ -73,7 +73,9 @@ var c_RotaB = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_
 var c_RotaC = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/rota_c.kml');
 var c_Hospitais = platMapAPI.createCustomVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/hospitais.kml', 'rgba(255, 255, 255, 1)', '../wp-content/uploads/2024/08/11.png', 1, 1); 
 var c_Ceus = platMapAPI.createCustomVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/ceus.kml', 'rgba(255, 255, 255, 1)', '../wp-content/uploads/2024/08/12.png', 1, 1); 
-var c_TerminalSapopemba = platMapAPI.createCustomVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/terminal_sapopemba.kml', 'rgba(255, 255, 255, 1)', '../wp-content/uploads/2024/08/13.png', 1, 1);
+var c_TerminalSapopemba = platMapAPI.createCustomVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/terminal_sapopemba.kml', 'rgba(255, 255, 255, 1)', '../wp-content/uploads/2024/08/13.png', 1, 1, 'rgba(10, 51, 153, 0.8)');
+
+c_TerminalSapopemba.setZIndex(1);
 
 /* HOVER POPUP */
 var container = document.getElementById('popup');
@@ -317,9 +319,11 @@ function zoomRota(rota) {
 
   for (const item of Object.keys(rotas)) {
     if (item !== rota && item != "rotaPerimetro" && rota !== "rotaPerimetro") {
-      rotas[item]["camada"].setVisible(false);
+      rotas[item]["camada"].setOpacity(0.5);
+      jQuery(`#${item}`).addClass("legLayerInativa");
     } else {
-      rotas[item]["camada"].setVisible(true);
+      rotas[item]["camada"].setOpacity(1);
+      jQuery(`#${item}`).removeClass("legLayerInativa");
     }
   }
 
@@ -330,18 +334,25 @@ function zoomRota(rota) {
 function iniciarFase() {
   jQuery(".modalContainer").addClass("hidden");
   jQuery("#modalInstrucoes").addClass("hidden");
+  jQuery("#modalConfirmarEnvio").addClass("hidden");
   jQuery("#modalEnviar").addClass("hidden");
   jQuery("#modal2aFase").addClass("hidden");
+}
+
+function modalConfirmarEnvio() {
+  jQuery("#modalConfirmarEnvio").removeClass("hidden");
+  jQuery(".modalContainer").removeClass("hidden");
 }
 
 function modalEnviar() {  
   jQuery(".modalContainer").removeClass("hidden");
   jQuery("#modalEnviar").removeClass("hidden");
+  jQuery("#modalConfirmarEnvio").addClass("hidden");
   jQuery("#botoesEnviar").addClass("hidden");
   jQuery("#mensagemEnviar").html("<b>Enviando contribuição...</b>")
   setTimeout(() => {
     enviarFormulario();
-  }, 5000)
+  }, 2000)
 }
 
 function modal2aFase() {

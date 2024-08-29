@@ -184,7 +184,8 @@ wp_head();
 
 		.botaoEnviar:disabled {
 			background-color: #5CD4C7;
-			color: #aaa;
+			opacity: .4;
+			cursor: default;
 		}
 
 		.botaoCancelar {
@@ -206,5 +207,13 @@ wp_head();
 			div#sidenav {
 				left: calc((100vw - 1436px) / 2) !important;
 			}
+		}
+
+		#legenda li, #legenda li * {
+			cursor: default !important;
+		}
+
+		#legenda li.clicavel, #legenda li.clicavel * {
+			cursor: pointer !important;
 		}
 	</style>

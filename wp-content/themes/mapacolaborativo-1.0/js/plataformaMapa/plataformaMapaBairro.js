@@ -42,7 +42,12 @@
 			style: stylePointLayer
                     });
     };
-    PlatMap.prototype.createCustomVectorLayerFromKML = function(url,imageColor,imageIcon,opacity,scale){
+    PlatMap.prototype.createCustomVectorLayerFromKML = function(url,imageColor,imageIcon,opacity,scale,polygonColor){
+        var fillColor = 'rgba(128, 159, 255, 0.3)';
+        if (polygonColor) {
+          fillColor = polygonColor;
+        }
+
         var iconStyle = new ol.style.Icon({
             anchor: [0.5, 0.5],
             anchorXUnits: 'fraction',
@@ -54,10 +59,10 @@
           });
          stylePointLayer = new ol.style.Style({
             fill: new ol.style.Fill({
-              color: 'rgba(128, 159, 255, 0.3)'
+              color: fillColor,
             }),
             stroke: new ol.style.Stroke({
-              color: imageColor,
+              color: fillColor,
               width: 1
             }),
             image: iconStyle

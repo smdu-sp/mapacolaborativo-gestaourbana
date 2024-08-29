@@ -31,20 +31,22 @@ get_header('bairro');
           <div id="containerLegenda">
             <div id="containerSubmenu">
               <ul id="legenda" class="unselectable">
-                <li id="rotaPerimetro">
-                  <icone style="background-color: #000;" class="iconCircle"></icone>
-                  <label>Perímetro do Projeto</label>
+                <li id="rotaPerimetro" class="clicavel" style="display: flex;">
+                  <icone style="background-color: #000; width: 15px; flex-shrink: 0; line-height: 0;" class="iconCircle"></icone>
+                  <div>
+                    <label>Perímetro do Projeto (clique para centralizar no mapa)</label>
+                  </div>
                 </li>
-                <li id="rotaA">
-                  <icone style="background-color: #f94668;" class="iconCircle"></icone>
+                <li id="rotaA" class="clicavel" >
+                  <icone style="background-color: #FA4569;" class="iconCircle"></icone>
                   <label>Rota A (clique para selecionar)</label>
                 </li>
-                <li id="rotaB">
-                  <icone style="background-color: #0a3299;" class="iconCircle"></icone>
+                <li id="rotaB" class="clicavel" >
+                  <icone style="background-color: #527AED;" class="iconCircle"></icone>
                   <label>Rota B (clique para selecionar)</label>
                 </li>
-                <li id="rotaC">
-                  <icone style="background-color: #ed7d31;" class="iconCircle"></icone>
+                <li id="rotaC" class="clicavel" >
+                  <icone style="background-color: #F26E14;" class="iconCircle"></icone>
                   <label>Rota C (clique para selecionar)</label>
                 </li>
                 <li id="terminalSapopemba">
@@ -102,6 +104,13 @@ get_header('bairro');
                 <button class="botoes botaoIniciar" type="button" onclick="iniciarFase()">Começar</button>
               </div>
             </div>
+            <div id="modalConfirmarEnvio" class="hidden">
+              <p><b>Tem certeza que não deseja fazer mais nenhuma proposta de melhoria, e prosseguir com o envio?</b></p>
+              <div class="centralizar">
+                <button type="button" class="botoes botaoIniciar" onclick="modalEnviar()">Enviar</button>
+                <button type="button" class="botoes botaoCancelar" onclick="iniciarFase()">Voltar</button>
+              </div>
+            </div>
             <div id="modalEnviar" class="hidden">
               <p id="mensagemEnviar"><b>Enviando contribuição...</b></p>
               <div id="botoesEnviar" class="centralizar hidden">
@@ -118,8 +127,8 @@ get_header('bairro');
           </div>
         </div>
         <div id="containerBotaoEnviar">
-          <button class="botoes botaoEnviar" type="button" onclick="modalEnviar()" disabled>Enviar 1ª Fase</button>
-          <button class="botoes botaoIniciar" type="button" onclick="modal2aFase()">Ir à 2ª Fase</button>
+          <button class="botoes botaoEnviar" type="button" onclick="modalConfirmarEnvio()" disabled title="É necessário realizar ao menos uma proposta para realizar o envio">Enviar Propostas</button>
+          <button class="botoes botaoIniciar" type="button" onclick="modal2aFase()" title="Clique aqui caso não tenha propostas de melhorias e deseje seguir para a próxima fase">Próxima Fase</button>
         </div>
       </div>
     </div>
