@@ -140,14 +140,14 @@ get_header('bairro');
               </div>
             </div>
             <div id="modalEscadarias" class="hidden">
+              <div id="containerBannerEscadarias" style="margin-bottom: 20px;">
+                <img src="/wp-content/uploads/2024/08/banner_escadarias.png"  style="max-width: 900px;" alt="Consideramos que a escadaria deve ter, no mínimo: piso seguro; corrimão; drenagem eficiente; iluminação; sinalização; lixeira; e trilho para bicicleta. Além dessas ações, escolha até 3 melhorias que esta escadaria necessita:">
+              </div>
               <div id="containerEscadarias">
                 <div id="fotoEscadaria">
                   <img src="" alt="Foto da escadaria selecionada">
                 </div>
                 <div id="escolhasEscadaria">
-                  <p class="tituloPopup" style="margin-top: 0">
-                    Escolha até 3 melhorias que esta escadaria necessita:
-                  </p>
                   <div style="display: flex; flex-wrap: wrap; width: 620px; align-items: center; justify-content: space-between">
                   <?php
                   foreach ($results as $linha) {
