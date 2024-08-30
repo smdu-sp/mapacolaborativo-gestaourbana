@@ -135,7 +135,7 @@ get_header('bairro');
         </div>
         <div id="containerBotaoEnviar">
           <button class="botoes botaoEnviar" type="button" onclick="modalConfirmarEnvio()" disabled title="É necessário realizar ao menos uma proposta para realizar o envio">Enviar Propostas</button>
-          <button class="botoes botaoIniciar" type="button" onclick="modal2aFase()" title="Clique aqui caso não tenha propostas de melhorias e deseje seguir para a próxima fase">Próxima Fase</button>
+          <button id="botaoProximaFase" class="botoes botaoIniciar" type="button" onclick="modal2aFase()" title="Clique aqui caso não tenha propostas de melhorias e deseje seguir para a próxima fase">Próxima Fase</button>
         </div>
         <div id="containerSatelite">
           <button id="botaoSatelite" onclick="toggleLayer()">Satélite</button>

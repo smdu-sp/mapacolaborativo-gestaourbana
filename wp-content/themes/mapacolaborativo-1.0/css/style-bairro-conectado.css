@@ -163,11 +163,19 @@ div#sidenav {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 50px;
-  padding: 20px;
+  bottom: 0.5em;
+  padding: 2px;
   z-index: 1;
-  background-color: #fff;
-  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 4px;
+}
+
+#containerBotaoEnviar button {
+  margin: 1px;
+}
+
+#containerBotaoEnviar #botaoProximaFase {
+  margin-left: 6px;
 }
 
 #legenda li,
@@ -280,6 +288,7 @@ span {
   border: none;
   border-radius: 4px;
   min-width: 68px;
+  margin: 1px;
 }
 
 @media (min-width: 1436px) {
@@ -288,6 +297,6 @@ span {
   }
 
   #containerSatelite {
-    left: calc((100vw - 1436px) / 2 + .5em) !important;
+    left: calc((100vw - 1436px) / 2 + 0.5em) !important;
   }
 }
