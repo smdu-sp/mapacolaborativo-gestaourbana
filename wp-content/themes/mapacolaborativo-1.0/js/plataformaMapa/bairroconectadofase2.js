@@ -60,7 +60,7 @@ var c_Escadarias = platMapAPI.createDistinctPointLayerFromKML('../wp-content/upl
 var c_Hospitais = platMapAPI.createCustomVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/hospitais.kml', 'rgba(255, 255, 255, 1)', '../wp-content/uploads/2024/08/11.png', 1, 0.6);
 var c_Ceus = platMapAPI.createCustomVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/ceus.kml', 'rgba(255, 255, 255, 1)', '../wp-content/uploads/2024/08/12.png', 1, 0.6);
 var c_TerminalSapopemba = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/terminal_sapopemba_poligono.kml');
-var c_Metro = platMapAPI.createCustomVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/terminal_sapopemba_ponto.kml', 'rgba(255, 255, 255, 1)', '../wp-content/uploads/2024/08/14.png', 1, 0.6);
+var c_Metro = platMapAPI.createCustomVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/estacao_metro_sapopemba.kml', 'rgba(255, 255, 255, 1)', '../wp-content/uploads/2024/08/14.png', 1, 0.6);
 
 c_Escadarias.setZIndex(2);
 c_TerminalSapopemba.setZIndex(1);
