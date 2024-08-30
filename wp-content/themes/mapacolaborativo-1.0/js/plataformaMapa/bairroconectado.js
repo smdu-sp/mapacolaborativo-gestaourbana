@@ -101,17 +101,59 @@ function popupClose() {
 /**
 * CONFIGURA MAPA PARA EXIBIÇÃO
 */
+var camadaAtualRuas = true;
+
+function toggleLayer() {
+  if (camadaAtualRuas) {
+    map.removeLayer(c_Ruas);
+    map.addLayer(c_Satellite);
+  } else {
+    map.removeLayer(c_Satellite);
+    map.addLayer(c_Ruas);
+  }
+
+  camadaAtualRuas = !camadaAtualRuas;
+
+  if (camadaAtualRuas) {
+    jQuery("#botaoSatelite").html("Satélite");
+  } else {
+    jQuery("#botaoSatelite").html("Ruas");
+  }
+}
+
 var view = new ol.View({
   center: [-5176476.419686802, -2706742.884678815],
   zoom: 15,
   minZoom: 11.5,
   maxZoom: 22
 });
+
+const key = 'Get your own API key at https://www.maptiler.com/cloud/';
+const attributions =
+  '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> ' +
+  '<a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>';
+
+c_Ruas = new ol.layer.Tile({
+  source: new ol.source.XYZ({
+    attributions: attributions,
+    url: 'https://api.maptiler.com/maps/streets-v2/{z}/{x}/{y}.png?key=' + key,
+    tileSize: [512, 512],
+    maxZoom: 22,
+  }),
+});
+c_Satellite = new ol.layer.Tile({
+  source: new ol.source.XYZ({
+    attributions: attributions,
+    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+    maxZoom: 22,
+  }),
+});
+c_Ruas.setZIndex(-1);
+c_Satellite.setZIndex(-1);
+
 var map = new ol.Map({
   layers: [
-    new ol.layer.Tile({
-      source: new ol.source.OSM()
-    }),
+    c_Ruas,
     c_RotaA,
     c_RotaB,
     c_RotaC,

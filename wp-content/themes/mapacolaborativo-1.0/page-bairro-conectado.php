@@ -137,6 +137,9 @@ get_header('bairro');
           <button class="botoes botaoEnviar" type="button" onclick="modalConfirmarEnvio()" disabled title="É necessário realizar ao menos uma proposta para realizar o envio">Enviar Propostas</button>
           <button class="botoes botaoIniciar" type="button" onclick="modal2aFase()" title="Clique aqui caso não tenha propostas de melhorias e deseje seguir para a próxima fase">Próxima Fase</button>
         </div>
+        <div id="containerSatelite">
+          <button id="botaoSatelite" onclick="toggleLayer()">Satélite</button>
+        </div>
       </div>
     </div>
   </div>
@@ -145,5 +148,25 @@ get_header('bairro');
   <div class="loadingMapaColaborativo" id="loadingMapaColaborativo"></div>
   <script type="text/javascript" src="<?php echo bloginfo('template_url'); ?>/js/plataformaMapa/bairroconectado.js"></script>
 </div>
+
+<style>
+  #containerSatelite {
+    position: absolute;
+    bottom: .5em;
+    left: .5em;
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: 2px;
+    border-radius: 4px;
+  }
+
+  #botaoSatelite {
+    color: #fff;
+    background-color: rgba(0, 60, 136, .5);
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    min-width: 68px;
+  }
+</style>
 
 <?php endwhile; ?>
