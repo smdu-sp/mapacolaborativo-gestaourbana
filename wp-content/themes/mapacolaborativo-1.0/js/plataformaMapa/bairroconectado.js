@@ -125,7 +125,7 @@ var view = new ol.View({
   center: [-5176476.419686802, -2706742.884678815],
   zoom: 15,
   minZoom: 11.5,
-  maxZoom: 22
+  maxZoom: 19,
 });
 
 const key = 'Get your own API key at https://www.maptiler.com/cloud/';
@@ -138,14 +138,12 @@ c_Ruas = new ol.layer.Tile({
     attributions: attributions,
     url: 'https://api.maptiler.com/maps/streets-v2/{z}/{x}/{y}.png?key=' + key,
     tileSize: [512, 512],
-    maxZoom: 22,
   }),
 });
 c_Satellite = new ol.layer.Tile({
   source: new ol.source.XYZ({
     attributions: attributions,
     url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-    maxZoom: 22,
   }),
 });
 c_Ruas.setZIndex(-1);

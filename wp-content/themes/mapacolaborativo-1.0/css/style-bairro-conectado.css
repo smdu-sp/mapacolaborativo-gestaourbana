@@ -300,3 +300,13 @@ span {
     left: calc((100vw - 1436px) / 2 + 0.5em) !important;
   }
 }
+
+#modalEscadarias {
+  position: relative;
+}
+
+#containerDescritivoFase2 {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}

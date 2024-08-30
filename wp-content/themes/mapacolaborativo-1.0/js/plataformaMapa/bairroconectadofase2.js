@@ -39,6 +39,17 @@ jQuery("[id^=rota]").on("click",function(){
     var id = jQuery(this).attr("id");
     zoomRota(id);
 });
+jQuery("[id^=melhoria]").hover(
+  function() {
+    var id = jQuery(this).attr("data-id-opcao");
+    jQuery("#imgDescritivo").attr("src", `/wp-content/uploads/2024/08/frame-${id}.png`);
+
+    jQuery("#containerDescritivoFase2").removeClass('hidden');
+
+  }, function() {
+    jQuery("#containerDescritivoFase2").addClass('hidden');
+  }
+);
 
 var camada1 = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/MSP_Contorno_bairro_conectado_fase_2.kml');
 var c_Perimetro = platMapAPI.createVectorLayerFromKML('../wp-content/uploads/bairro_conectado/2024-08/perimetro_fase_2.kml');
@@ -194,18 +205,7 @@ var displayFeatureInfo = function(pixel,evt) {
       popupHtml += feature.get('DESCRICAO');
       popupHtml += '</p>'
       content.innerHTML = popupHtml;
-      overlay.setPosition(coordinate);
-      jQuery("[id^=btn-estrategia]").hover(
-        function() {
-          var id = jQuery(this).attr("data-id-opcao");
-          jQuery("#imgDescritivo").attr("src", `/wp-content/uploads/2024/08/frame-${id}.png`);
-
-          jQuery("#containerDescritivo").removeClass('hidden');
-      
-        }, function() {
-          jQuery("#containerDescritivo").addClass('hidden');
-        }
-      );      
+      overlay.setPosition(coordinate);   
     } else {
       popupClose();
       for (const obj of contribuicoesEscadarias) {

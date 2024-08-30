@@ -85,9 +85,6 @@ get_header('bairro');
                 ?>
               </ul>
             </div>
-            <div id="containerDescritivo" class="hidden">
-              <img id="imgDescritivo" src="" alt="">
-            </div>
           </div>
         </div>
         <div class="modalContainer">
@@ -147,7 +144,7 @@ get_header('bairro');
                   <?php
                   foreach ($results as $linha) {
                   ?>
-                    <button id="melhoria-<?= $linha->id_opcao ?>" class="botaoEscadaria" style="display: flex; flex: 0 0 200px; height: 54px; border: none; padding: 5px 5px; box-sizing: border-box; align-items: center; cursor: pointer;" onclick="selecionarMelhoria(<?= $linha->id_opcao ?>)">
+                    <button id="melhoria-<?= $linha->id_opcao ?>" data-id-opcao="<?= $linha->id_opcao ?>" class="botaoEscadaria" style="display: flex; flex: 0 0 200px; height: 54px; border: none; padding: 5px 5px; box-sizing: border-box; align-items: center; cursor: pointer;" onclick="selecionarMelhoria(<?= $linha->id_opcao ?>)">
                       <img src="../wp-content/uploads/2024/08/<?= $linha->id_opcao ?>.png">
                       <span style="text-align: left; margin-left: 6px;">
                         <?= $linha->descricao ?>
@@ -161,6 +158,9 @@ get_header('bairro');
               </div>
               <div class="centralizar">
                 <button type="button" class="botoes botaoIniciar" onclick="iniciarFase();">Confirmar</button>
+              </div>
+              <div id="containerDescritivoFase2" class="hidden">
+                <img id="imgDescritivo" src="" alt="">
               </div>
             </div>
           </div>
