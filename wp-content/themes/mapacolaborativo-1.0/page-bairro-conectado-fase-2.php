@@ -169,6 +169,9 @@ get_header('bairro');
         <div id="containerBotaoEnviar">
           <button class="botoes botaoEnviar" type="button" onclick="modalConfirmarEnvio()" disabled title="É necessário realizar ao menos uma proposta para realizar o envio">Enviar Propostas</button>
         </div>
+        <div id="containerSatelite">
+          <button id="botaoSatelite" onclick="toggleLayer()">Satélite</button>
+        </div>
       </div>
     </div>
   </div>
