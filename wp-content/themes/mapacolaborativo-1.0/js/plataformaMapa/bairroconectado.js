@@ -144,7 +144,7 @@ c_Ruas = new ol.layer.Tile({
 });
 c_Satellite = new ol.layer.Tile({
   source: new ol.source.XYZ({
-    attributions: attributions,
+    attributions: '© Esri, Maxar, Earthstar Geographics, and the GIS User Community',
     url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
   }),
 });
