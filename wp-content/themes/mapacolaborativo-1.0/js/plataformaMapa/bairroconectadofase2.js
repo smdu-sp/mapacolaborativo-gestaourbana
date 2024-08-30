@@ -215,13 +215,20 @@ var displayFeatureInfo = function(pixel,evt) {
       }
       var idEscadaria = feature.get("id");
       var rotaEscadaria = feature.get("Rota");
+      var rua1 = feature.get("Rua1");
+      var rua2 = feature.get("Rua2");
+      var rotaEscadaria = feature.get("Rota");
       var numEscadaria = parseInt(feature.get("Escadaria"));
       var objEscadaria = contribuicoesEscadarias.find(x => x["idEscadaria"] == idEscadaria);
       objEscadaria['atual'] = true;
       objEscadaria['rota'] = rotaEscadaria;
       objEscadaria['numEscadaria'] = numEscadaria;
+      objEscadaria['rua1'] = rua1;
+      objEscadaria['rua2'] = rua2;
       
       jQuery("#fotoEscadaria img").attr("src", `../wp-content/uploads/2024/08/Escadaria${idEscadaria}.jpeg`);
+      jQuery("#legendaEscadaria1").html(rua1);
+      jQuery("#legendaEscadaria2").html(rua2);
       atualizarEstadoEscolhas();
       modalEscadarias();
     }

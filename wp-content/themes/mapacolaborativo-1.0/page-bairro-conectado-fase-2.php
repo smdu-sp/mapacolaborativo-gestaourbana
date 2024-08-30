@@ -144,8 +144,14 @@ get_header('bairro');
                 <img src="/wp-content/uploads/2024/08/banner_escadarias.png"  style="max-width: 900px;" alt="Consideramos que a escadaria deve ter, no mínimo: piso seguro; corrimão; drenagem eficiente; iluminação; sinalização; lixeira; e trilho para bicicleta. Além dessas ações, escolha até 3 melhorias que esta escadaria necessita:">
               </div>
               <div id="containerEscadarias">
-                <div id="fotoEscadaria">
-                  <img src="" alt="Foto da escadaria selecionada">
+                <div id="containerInfoEscadaria">
+                  <div id="fotoEscadaria">
+                    <img src="" alt="Foto da escadaria selecionada">
+                  </div>
+                  <div style="display: flex; flex-direction: column">
+                    <label id="legendaEscadaria1" style="margin-top: 6px; font-family: Museo; font-weight: 700; font-size: 16px;"></label>
+                    <label id="legendaEscadaria2" style="margin-top: 6px; font-family: Museo; font-weight: 700; font-size: 16px;""></label>
+                  </div>
                 </div>
                 <div id="escolhasEscadaria">
                   <div style="display: flex; flex-wrap: wrap; width: 620px; align-items: center; justify-content: space-between">
