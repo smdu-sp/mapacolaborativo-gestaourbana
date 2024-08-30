@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, minimumscale=1.0, maximum-scale=1.0" />
-	<title>Plataforma Consulta Pública Mapas</title>
+	<title><?= get_the_title() ?></title>
 	<meta name="description" content=" Participe do planejamento de uma nova São Paulo">
 	<link rel="stylesheet" type="text/css" href="<?php bloginfo( 'stylesheet_url' ); ?>?<?php echo time(); ?>"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo bloginfo('template_url'); ?>/css/style-agenda-interna.css"/>
