@@ -195,6 +195,7 @@ function adicionarPin(rota, lat, lon, opcao) {
 
   if (escolhas.length > 0) {
     jQuery("#containerBotaoEnviar .botaoEnviar").removeAttr("disabled");
+    jQuery("#containerBotaoEnviar .botaoEnviar").removeAttr("title");
   }
 
   const infoFeature = {
@@ -391,7 +392,7 @@ async function enviarFormulario() {
     const resData = await res.json();
 
     if (resData.status == 200) {
-      jQuery("#mensagemEnviar").html("<b>Contribuição enviada com sucesso! Aguarde para prosseguir para a próxima fase.</b>");
+      jQuery("#mensagemEnviar").html("<b>Contribuição enviada com sucesso! <br><br>Aguarde para prosseguir para a próxima fase.</b>");
 
       setTimeout(() => {
         proximaFase();

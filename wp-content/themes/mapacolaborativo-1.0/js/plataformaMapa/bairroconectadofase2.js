@@ -148,7 +148,7 @@ var displayFeatureInfo = function(pixel,evt) {
     console.warn(feature.get('CAMADA'));
     if(feature.get("Escadaria") == null){
       var rota = feature.get("ROTA");
-      var popupHtml = '<p style="margin-top: 0; text-align: left;">'
+      var popupHtml = '<p class="tituloPopup">'
       popupHtml += feature.get('DESCRICAO');
       popupHtml += '</p>'
       content.innerHTML = popupHtml;
@@ -326,6 +326,7 @@ function atualizarEstadoEscolhas() {
 function verificarEscolhas() {
   let contribuiu = false;
   jQuery("#containerBotaoEnviar .botaoEnviar").attr("disabled", "disabled");
+  jQuery("#containerBotaoEnviar .botaoEnviar").attr("title", "É necessário realizar ao menos uma proposta para realizar o envio");
   
   for (obj of contribuicoesEscadarias) {
     if (obj["escolhas"].size > 0) {
@@ -336,6 +337,7 @@ function verificarEscolhas() {
   
   if (contribuiu) {
     jQuery("#containerBotaoEnviar .botaoEnviar").removeAttr("disabled");    
+    jQuery("#containerBotaoEnviar .botaoEnviar").removeAttr("title");    
   }
 }
 
