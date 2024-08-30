@@ -391,7 +391,9 @@ async function enviarFormulario() {
   var contribuicoes = [];
   for (obj of contribuicoesEscadarias) {
     if (obj["escolhas"].size > 0) {
-      obj["escolhas"] = [...obj["escolhas"]].sort();
+      obj["escolhas"] = [...obj["escolhas"]].sort(function (a, b) {
+        return a - b;
+      });
       contribuicoes.push({
         "idEscadaria": obj["idEscadaria"],
         "rota": obj["rota"],
