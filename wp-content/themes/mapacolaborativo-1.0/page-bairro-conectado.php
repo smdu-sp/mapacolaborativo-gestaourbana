@@ -89,8 +89,8 @@ get_header('bairro');
         <div class="modalContainer">
           <div class="modal">
             <div id="modalInstrucoes">
-              <p style="margin-top: 0;"><b>Queremos saber quais ações de melhoria você gostaria de sugerir em cada rota.</b></p>
-              <div style="display: flex; flex-wrap: wrap; width: 620px;">
+              <p class="tituloModal"><b>Queremos saber quais ações de melhoria você gostaria de sugerir em cada rota.</b></p>
+              <div style="display: flex; flex-wrap: wrap; width: 800px;">
                 <?php
                 foreach ($results as $linha) {
                 ?>
@@ -104,28 +104,28 @@ get_header('bairro');
                 }
                 ?>
               </div>
-              <p><b>Passo 1:</b><br>Escolha uma rota no mapa.</p>
-              <p><b>Passo 2:</b><br>Clique no mapa para marcar onde você acha que as melhorias devem ser feitas.</p>
-              <p><b>Passo 3:</b><br>Confirme sua participação clicando em "Enviar".</p>
+              <p class="instrucoes"><b>Passo 1:</b><br>Escolha uma rota no mapa.</p>
+              <p class="instrucoes"><b>Passo 2:</b><br>Clique no mapa para marcar onde você acha que as melhorias devem ser feitas. Você pode propor quantas melhorias quiser.</p>
+              <p class="instrucoes"><b>Passo 3:</b><br>Confirme sua participação clicando em "Enviar Proposta".</p>
               <div class="centralizar">
                 <button class="botoes botaoIniciar" type="button" onclick="iniciarFase()">Começar</button>
               </div>
             </div>
             <div id="modalConfirmarEnvio" class="hidden">
-              <p><b>Tem certeza que não deseja fazer mais nenhuma proposta de melhoria, e prosseguir com o envio?</b></p>
+              <p class="tituloPopup"><b>Tem certeza que não deseja fazer mais nenhuma proposta de melhoria, e prosseguir com o envio?</b></p>
               <div class="centralizar">
                 <button type="button" class="botoes botaoIniciar" onclick="modalEnviar()">Enviar</button>
                 <button type="button" class="botoes botaoCancelar" onclick="iniciarFase()">Voltar</button>
               </div>
             </div>
             <div id="modalEnviar" class="hidden">
-              <p id="mensagemEnviar"><b>Enviando contribuição...</b></p>
+              <p id="mensagemEnviar" class="tituloPopup"><b>Enviando contribuição...</b></p>
               <div id="botoesEnviar" class="centralizar hidden">
                 <button type="button" class="botoes botaoCancelar" onclick="iniciarFase()">Voltar</button>
               </div>
             </div>
             <div id="modal2aFase" class="hidden">
-              <p style="margin-top: 0;"><b>Tem certeza que deseja prosseguir para a próxima fase sem enviar contribuição?</b></p>
+              <p class="tituloPopup"><b>Tem certeza que deseja prosseguir para a próxima fase sem enviar contribuição?</b></p>
               <div class="centralizar">
                 <button type="button" class="botoes botaoIniciar" onclick="proximaFase()">Prosseguir</button>
                 <button type="button" class="botoes botaoCancelar" onclick="iniciarFase()">Cancelar</button>

@@ -225,11 +225,11 @@ var displayFeatureInfo = function(pixel,evt) {
     console.warn(feature.get('CAMADA'));
     if(feature.get("DADOS_COLAB") == null){
       var rota = feature.get("ROTA");
-      var popupHtml = '<p style="margin-top: 0; text-align: left;">'
+      var popupHtml = '<p class="tituloPopup">'
       popupHtml += feature.get('DESCRICAO');
       popupHtml += '</p>'
       if(feature.get('CAMADA') == 1 || feature.get('sg_macro_d') == "EETU"){
-        popupHtml += '<div style="display: flex; flex-wrap: wrap; width: 620px;">'
+        popupHtml += '<div class="botoesPopup">'
 
         for (const index in imageIconPropsLayer) {
           popupHtml += `

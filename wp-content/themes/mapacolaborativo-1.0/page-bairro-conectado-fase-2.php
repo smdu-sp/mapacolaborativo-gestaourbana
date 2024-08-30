@@ -93,7 +93,7 @@ get_header('bairro');
         <div class="modalContainer">
           <div class="modal">
             <div id="modalInstrucoes">
-              <p style="margin-top: 0;"><b>Queremos saber quais ações de melhoria você gostaria de sugerir para as escadarias nas rotas.</b></p>
+              <p class="tituloModal"><b>Queremos saber quais ações de melhoria você gostaria de sugerir para as escadarias nas rotas.</b></p>
               <div style="display: flex; flex-wrap: wrap; width: 620px;">
                 <?php
                 foreach ($results as $linha) {
@@ -108,28 +108,28 @@ get_header('bairro');
                 }
                 ?>
               </div>
-              <p><b>Passo 1:</b><br>Para cada rota, selecione a escadaria onde deseja sugerir melhorias.</p>
-              <p><b>Passo 2:</b><br>Clique na foto da escadaria para marcar as ações de melhoria desejadas.</p>
-              <p><b>Passo 3:</b><br>Confirme sua participação clicando em "Enviar".</p>
+              <p class="instrucoes"><b>Passo 1:</b><br>Para cada rota, selecione as escadarias onde deseja sugerir melhorias.</p>
+              <p class="instrucoes"><b>Passo 2:</b><br>Clique no ícone da escadaria para marcar as ações de melhoria desejadas. <br>Você pode propor melhorias em quantas escadarias quiser.</p>
+              <p class="instrucoes"><b>Passo 3:</b><br>Confirme sua participação clicando em "Enviar Proposta".</p>
               <div class="centralizar">
                 <button class="botoes botaoIniciar" type="button" onclick="iniciarFase()">Começar</button>
               </div>
             </div>
             <div id="modalConfirmarEnvio" class="hidden">
-              <p><b>Tem certeza que não deseja fazer mais nenhuma proposta de melhoria, e prosseguir com o envio?</b></p>
+              <p class="tituloPopup"><b>Tem certeza que não deseja fazer mais nenhuma proposta de melhoria, e prosseguir com o envio?</b></p>
               <div class="centralizar">
                 <button type="button" class="botoes botaoIniciar" onclick="modalEnviar()">Enviar</button>
                 <button type="button" class="botoes botaoCancelar" onclick="iniciarFase()">Voltar</button>
               </div>
             </div>
             <div id="modalEnviar" class="hidden">
-              <p id="mensagemEnviar"><b>Enviando contribuição...</b></p>
+              <p class="tituloPopup" id="mensagemEnviar"><b>Enviando contribuição...</b></p>
               <div id="botoesEnviar" class="centralizar hidden">
                 <button type="button" class="botoes botaoCancelar" onclick="iniciarFase()">Voltar</button>
               </div>
             </div>
             <div id="modalSucesso" class="hidden">
-              <p><b>Contribuição enviada com sucesso!</b></p>
+              <p class="tituloPopup"><b>Contribuição enviada com sucesso!</b></p>
               <div class="centralizar">
                 <button type="button" class="botoes botaoIniciar" onclick="window.location.href = 'https://gestaourbana.prefeitura.sp.gov.br/projetos-urbanos/bairro-conectado-terminal-sapopemba/'">Encerrar</button>
               </div>
@@ -140,7 +140,7 @@ get_header('bairro');
                   <img src="" alt="Foto da escadaria selecionada">
                 </div>
                 <div id="escolhasEscadaria">
-                  <p style="margin-top: 0">
+                  <p class="tituloPopup" style="margin-top: 0">
                     Escolha até 3 melhorias que esta escadaria necessita:
                   </p>
                   <div style="display: flex; flex-wrap: wrap; width: 620px; align-items: center; justify-content: space-between">
@@ -179,32 +179,3 @@ get_header('bairro');
 </div>
 
 <?php endwhile; ?>
-
-<style>
-  .botaoEscadaria {
-    background-color: transparent;
-  }
-  .botaoEscadaria:nth-child(n + 4) {
-    margin-top: 10px;
-  }
-
-  .botaoEscadaria.selecionado {
-    background-color: rgba(54, 123, 241, 0.5) ;
-  }
-
-  .botaoEscadaria:disabled {
-    background-color: rgba(180, 180, 180, 0.5) !important;
-  }
-
-  #containerEscadarias {
-    display: flex;
-  }
-
-  #fotoEscadaria, #fotoEscadaria img {
-    height: 380px;
-  }
-
-  #fotoEscadaria {
-    margin-right: 30px; 
-  }
-</style>

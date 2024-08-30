@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html id="html-bairro-conectado">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, minimumscale=1.0, maximum-scale=1.0" />
@@ -21,6 +21,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo bloginfo('template_url'); ?>/css/style-noticias-sidebar.css"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo bloginfo('template_url'); ?>/css/style-noticias.css"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo bloginfo('template_url'); ?>/css/style-comments.css"/>
+	<link rel="stylesheet" type="text/css" href="<?php echo bloginfo('template_url'); ?>/css/style-bairro-conectado.css"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo bloginfo('template_url'); ?>/css/glDatePicker.flatwhite.css"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo bloginfo('template_url'); ?>/css/jquery.fancybox.css"/>
 	<!--script type="text/javascript" src="//misc.prefeitura.sp.gov.br/v2/startup.js"></script-->
@@ -60,164 +61,3 @@ wp_head();
 	<header>
 		<div id="header-banner"></div>
     </header>
-
-	<style>
-		#header-banner {
-			background: url('../wp-content/uploads/2024/08/AZUL_cabecalho_consultsapublica_sapopemba_1.png') center no-repeat;
-			height: 129px;
-			width: 1436px;
-			margin: 0 auto;
-		}
-
-		html {
-			margin: 0 !important;
-		}
-
-		#containerDescritivo {
-			background-color: rgba(255, 255, 255, 0.9);
-			border-radius: 10px;
-			margin-top: 20px;
-			padding: 6px 3.5px;
-			border: none;
-			width: 340px;
-			height: 180px;
-			overflow: visible;
-		}
-
-		#containerDescritivo img {
-			max-width: 100%;
-			height: auto;
-		}
-
-		.descritivos {
-			padding: 20px;
-		}
-
-		#containerLegenda {
-			display: flex;
-			flex-direction: column;
-			max-width: 340px;
-		}
-
-		#containerSubmenu {
-			width: 250px;
-			margin: 0;
-		}
-
-		.BotoesMenu.tituloLegenda {
-			width: 250px;
-			background-color: #367BF1;
-			display: inline-block;
-			color: #FFF;
-			padding: 10px 20px;
-			text-decoration: none;
-			box-sizing: border-box;
-			font-size: 12px;
-			font-weight: bold;
-			border: 20px;
-			max-width: 350px;
-		}
-
-		div#sidenav {
-			min-width: 250px;
-			max-width: 650px;
-		}
-
-		.hidden {
-			display: none !important;
-		}
-
-		.modalContainer {
-			position: absolute;
-			top: 0;
-			height: 100vh;
-			width: 100vw;
-			background-color: rgba(80, 80, 80, 0.7);
-			z-index: 9998;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-
-		.modal {
-			position: relative;
-			display: inline-block;
-			flex-direction: column;
-			background-color: #fff;
-			border-radius: 10px;
-			z-index: 9999;
-			margin: auto;
-			vertical-align: middle;
-			padding: 30px;
-		}
-
-		.centralizar {
-			text-align: center;
-		}
-
-		.botoes {
-			padding: 8px 16px;
-			border: none;
-			color: white;
-			font-weight: 700;
-			font-size: 20px;
-			cursor: pointer;
-			border-radius: 6px;
-		}
-
-		.botoes:disabled {
-			opacity: 0.65;
-		}
-
-		.botoes:nth-child(n+2) {
-			margin-left: 20px;
-		}
-
-		.botaoIniciar {
-			background-color: #367BF1;
-			;
-		}
-
-		.botaoEnviar {
-			background-color: #5CD4C7;
-		}
-
-		.botaoEnviar:disabled {
-			background-color: #5CD4C7;
-			opacity: .4;
-			cursor: default;
-		}
-
-		.botaoCancelar {
-			background-color: #888;
-		}
-
-		#containerBotaoEnviar {
-			position: absolute;
-			left: 50%;
-			transform: translateX(-50%);
-			bottom: 50px;
-			padding: 20px;
-			z-index: 1;
-			background-color: #fff;
-			border-radius: 10px;
-		}
-
-		@media (min-width: 1436px) {
-			div#sidenav {
-				left: calc((100vw - 1436px) / 2) !important;
-			}
-		}
-
-		#legenda li,
-		#legenda li * {
-			cursor: default !important;
-		}
-
-		#legenda li.clicavel,
-		#legenda li.clicavel *,
-		#botaoAjuda,
-		#botaoAjuda * {
-			cursor: pointer !important;
-		}
-	</style>
