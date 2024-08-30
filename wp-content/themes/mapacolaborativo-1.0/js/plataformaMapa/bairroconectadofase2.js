@@ -259,6 +259,7 @@ function iniciarFase() {
   jQuery("#modalConfirmarEnvio").addClass("hidden");
   jQuery("#modalEnviar").addClass("hidden");
   jQuery("#modalEscadarias").addClass("hidden");
+  jQuery("#modalSucesso").addClass("hidden");
 }
 
 function modalInstrucoes() {
@@ -285,6 +286,11 @@ function modalEnviar() {
 function modalEscadarias() {
   jQuery(".modalContainer").removeClass("hidden");
   jQuery("#modalEscadarias").removeClass("hidden");
+}
+
+function modalSucesso() {
+  jQuery("#modalEnviar").addClass("hidden");
+  jQuery("#modalSucesso").removeClass("hidden");
 }
 
 function selecionarMelhoria(idOpcao) {
@@ -364,12 +370,10 @@ async function enviarFormulario() {
       },
     );
     
-    return;
     const resData = await res.json();
 
-
     if (resData.status == 200) {
-      proximaFase();
+      modalSucesso();
     } else {
       jQuery("#mensagemEnviar").html("<b>Erro no envio da contribuição, por favor tente novamente mais tarde.</b>");
       jQuery("#botoesEnviar").removeClass("hidden");

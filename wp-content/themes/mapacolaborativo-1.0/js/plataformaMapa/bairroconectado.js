@@ -391,7 +391,11 @@ async function enviarFormulario() {
     const resData = await res.json();
 
     if (resData.status == 200) {
-      proximaFase();
+      jQuery("#mensagemEnviar").html("<b>Contribuição enviada com sucesso! Aguarde para prosseguir para a próxima fase.</b>");
+
+      setTimeout(() => {
+        proximaFase();
+      }, 3000);
     } else {
       jQuery("#mensagemEnviar").html("<b>Erro no envio da contribuição, por favor tente novamente mais tarde.</b>");
       jQuery("#botoesEnviar").removeClass("hidden");

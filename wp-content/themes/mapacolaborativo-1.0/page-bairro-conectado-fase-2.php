@@ -128,6 +128,12 @@ get_header('bairro');
                 <button type="button" class="botoes botaoCancelar" onclick="iniciarFase()">Voltar</button>
               </div>
             </div>
+            <div id="modalSucesso" class="hidden">
+              <p><b>Contribuição enviada com sucesso!</b></p>
+              <div class="centralizar">
+                <button type="button" class="botoes botaoIniciar" onclick="window.location.href = 'https://gestaourbana.prefeitura.sp.gov.br/projetos-urbanos/bairro-conectado-terminal-sapopemba/'">Encerrar</button>
+              </div>
+            </div>
             <div id="modalEscadarias" class="hidden">
               <div id="containerEscadarias">
                 <div id="fotoEscadaria">

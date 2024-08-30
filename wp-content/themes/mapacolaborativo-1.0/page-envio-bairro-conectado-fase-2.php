@@ -24,7 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['contribuicoes']) && co
 
   foreach ($contribuicoes as $obj) {
     foreach ($obj['escolhas'] as $escolha) {
-      print_r($obj);
       $dataContribuicoes = [
         'id_envio' => $idEnvio,
         'id_escadaria' => $obj['idEscadaria'],
@@ -34,8 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['contribuicoes']) && co
       ];
   
       $wpdb->insert($tableContribuicoes, $dataContribuicoes);
-      echo($wpdb->last_error);
-      echo($wpdb->last_query);
     }
   }
 
