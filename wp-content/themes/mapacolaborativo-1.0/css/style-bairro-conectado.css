@@ -261,11 +261,33 @@ span {
 }
 
 .botoesPopup button {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+#containerSatelite {
+  position: absolute;
+  bottom: 0.5em;
+  left: 0.5em;
+  background-color: rgba(255, 255, 255, 0.4);
+  padding: 2px;
+  border-radius: 4px;
+}
+
+#botaoSatelite {
+  color: #fff;
+  background-color: rgba(0, 60, 136, 0.5);
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  min-width: 68px;
 }
 
 @media (min-width: 1436px) {
   div#sidenav {
     left: calc((100vw - 1436px) / 2) !important;
+  }
+
+  #containerSatelite {
+    left: calc((100vw - 1436px) / 2 + .5em) !important;
   }
 }

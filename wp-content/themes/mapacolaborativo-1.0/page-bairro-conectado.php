@@ -149,24 +149,4 @@ get_header('bairro');
   <script type="text/javascript" src="<?php echo bloginfo('template_url'); ?>/js/plataformaMapa/bairroconectado.js"></script>
 </div>
 
-<style>
-  #containerSatelite {
-    position: absolute;
-    bottom: .5em;
-    left: .5em;
-    background-color: rgba(255, 255, 255, 0.4);
-    padding: 2px;
-    border-radius: 4px;
-  }
-
-  #botaoSatelite {
-    color: #fff;
-    background-color: rgba(0, 60, 136, .5);
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    min-width: 68px;
-  }
-</style>
-
 <?php endwhile; ?>
