@@ -165,7 +165,7 @@ get_header('bairro');
                 </div>
               </div>
               <div class="centralizar">
-                <button type="button" class="botoes botaoIniciar" onclick="iniciarFase();">Confirmar</button>
+                <button type="button" class="botoes botaoIniciar" onclick="modalConfirmarPropostas();">Confirmar</button>
                 <button type="button" class="botoes botaoCancelar" onclick="fecharPopupEscadarias()">Cancelar</button>
               </div>
               <div id="containerDescritivoFase2" class="hidden">
@@ -177,6 +177,13 @@ get_header('bairro');
               <div class="centralizar">
                 <button type="button" class="botoes botaoIniciar" onclick="descartarEscolhas()">Descartar</button>
                 <button type="button" class="botoes botaoCancelar" onclick="modalEscadarias()">Voltar</button>
+              </div>
+            </div>
+            <div id="modalConfirmarPropostas" class="hidden">
+              <p class="tituloPopup"><b>Deseja enviar suas propostas agora, ou realizar proposta em outra escadaria?</b></p>
+              <div class="centralizar">
+                <button type="button" class="botoes botaoEnviar" onclick="modalEnviar()">Enviar Propostas</button>
+                <button type="button" class="botoes botaoIniciar" onclick="iniciarFase()">Continuar Contribuindo</button>
               </div>
             </div>
           </div>

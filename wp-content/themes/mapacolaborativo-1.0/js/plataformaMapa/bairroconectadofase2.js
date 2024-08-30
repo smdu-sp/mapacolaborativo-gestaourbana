@@ -305,6 +305,7 @@ function iniciarFase() {
   jQuery("#modalEscadarias").addClass("hidden");
   jQuery("#modalSucesso").addClass("hidden");
   jQuery("#modalConfirmarCancelamento").addClass("hidden");
+  jQuery("#modalConfirmarPropostas").addClass("hidden");
 }
 
 function modalInstrucoes() {
@@ -322,10 +323,11 @@ function modalEnviar() {
   jQuery("#modalEnviar").removeClass("hidden");
   jQuery("#modalConfirmarEnvio").addClass("hidden");
   jQuery("#botoesEnviar").addClass("hidden");
-  jQuery("#mensagemEnviar").html("<b>Enviando contribuição...</b>")
+  jQuery("#modalConfirmarPropostas").addClass("hidden");
+  jQuery("#mensagemEnviar").html("<b>Enviando contribuição...</b>");
   setTimeout(() => {
     enviarFormulario();
-  }, 2000)
+  }, 2000);
 }
 
 function modalEscadarias() {
@@ -342,6 +344,17 @@ function modalSucesso() {
 function modalConfirmarCancelamento() {
   jQuery("#modalEscadarias").addClass("hidden");
   jQuery("#modalConfirmarCancelamento").removeClass("hidden");
+}
+
+function modalConfirmarPropostas() {
+  var objEscadaria = contribuicoesEscadarias.find(x => x["atual"]);
+  var set = objEscadaria["escolhas"];
+  if (set.size) {
+    jQuery("#modalEscadarias").addClass("hidden");
+    jQuery("#modalConfirmarPropostas").removeClass("hidden");  
+  } else {
+    iniciarFase();
+  }
 }
 
 function selecionarMelhoria(idOpcao) {
