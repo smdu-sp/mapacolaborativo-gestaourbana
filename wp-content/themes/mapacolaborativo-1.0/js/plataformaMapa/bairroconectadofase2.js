@@ -304,6 +304,7 @@ function iniciarFase() {
   jQuery("#modalEnviar").addClass("hidden");
   jQuery("#modalEscadarias").addClass("hidden");
   jQuery("#modalSucesso").addClass("hidden");
+  jQuery("#modalConfirmarCancelamento").addClass("hidden");
 }
 
 function modalInstrucoes() {
@@ -330,11 +331,17 @@ function modalEnviar() {
 function modalEscadarias() {
   jQuery(".modalContainer").removeClass("hidden");
   jQuery("#modalEscadarias").removeClass("hidden");
+  jQuery("#modalConfirmarCancelamento").addClass("hidden");
 }
 
 function modalSucesso() {
   jQuery("#modalEnviar").addClass("hidden");
   jQuery("#modalSucesso").removeClass("hidden");
+}
+
+function modalConfirmarCancelamento() {
+  jQuery("#modalEscadarias").addClass("hidden");
+  jQuery("#modalConfirmarCancelamento").removeClass("hidden");
 }
 
 function selecionarMelhoria(idOpcao) {
@@ -429,4 +436,20 @@ async function enviarFormulario() {
   } catch (err) {
     console.error(err);
   }
+}
+
+function fecharPopupEscadarias() {
+  var objEscadaria = contribuicoesEscadarias.find(x => x["atual"]);
+  var set = objEscadaria["escolhas"];
+  if (set.size) {
+    modalConfirmarCancelamento();
+  } else {
+    iniciarFase();
+  }
+}
+
+function descartarEscolhas() {
+  var objEscadaria = contribuicoesEscadarias.find(x => x["atual"]);
+  objEscadaria["escolhas"] = new Set();
+  iniciarFase();
 }

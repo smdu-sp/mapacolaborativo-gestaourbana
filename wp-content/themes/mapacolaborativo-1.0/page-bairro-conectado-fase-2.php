@@ -166,9 +166,17 @@ get_header('bairro');
               </div>
               <div class="centralizar">
                 <button type="button" class="botoes botaoIniciar" onclick="iniciarFase();">Confirmar</button>
+                <button type="button" class="botoes botaoCancelar" onclick="fecharPopupEscadarias()">Cancelar</button>
               </div>
               <div id="containerDescritivoFase2" class="hidden">
                 <img id="imgDescritivo" src="" alt="">
+              </div>
+            </div>
+            <div id="modalConfirmarCancelamento" class="hidden">
+              <p class="tituloPopup"><b>Tem certeza que deseja descartar as seleções realizadas para esta escadaria?</b></p>
+              <div class="centralizar">
+                <button type="button" class="botoes botaoIniciar" onclick="descartarEscolhas()">Descartar</button>
+                <button type="button" class="botoes botaoCancelar" onclick="modalEscadarias()">Voltar</button>
               </div>
             </div>
           </div>

@@ -260,9 +260,16 @@ span {
   text-align: left;
 }
 
-.ol-overlay-container .popup-closer-iframe.red {
+.popup-closer-iframe.red {
   color: #000 !important;
   top: 8px;
+  font-size: 20px;
+}
+
+.popup-closer-iframe.escadarias {
+  color: #000 !important;
+  right: 0;
+  top: 0;
   font-size: 20px;
 }
 
