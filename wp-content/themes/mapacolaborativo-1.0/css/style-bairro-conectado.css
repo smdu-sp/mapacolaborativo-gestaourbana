@@ -35,7 +35,7 @@ html#html-bairro-conectado {
 }
 
 #sidenav.sidenavBairroConectado {
-    top: 250px;
+  top: 250px;
 }
 
 #containerDescritivo {
@@ -295,16 +295,6 @@ span {
   margin: 1px;
 }
 
-@media (min-width: 1436px) {
-  div#sidenav {
-    left: calc((100vw - 1436px) / 2) !important;
-  }
-
-  #containerSatelite {
-    left: calc((100vw - 1436px) / 2 + 0.5em) !important;
-  }
-}
-
 #modalEscadarias {
   position: relative;
 }
@@ -313,4 +303,29 @@ span {
   position: absolute;
   right: 0;
   bottom: 0;
+}
+
+.ol-attribution {
+  z-index: 2;
+}
+
+#logoMaptiler {
+  position: absolute;
+  right: 36px;
+  bottom: 0.5em;
+  z-index: 1;
+}
+
+@media (min-width: 1436px) {
+  div#sidenav {
+    left: calc((100vw - 1436px) / 2) !important;
+  }
+
+  #containerSatelite {
+    left: calc((100vw - 1436px) / 2 + 0.5em) !important;
+  }
+
+  #logoMaptiler {
+    right: calc((100vw - 1436px) / 2 + 36px) !important;
+  }
 }

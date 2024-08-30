@@ -172,6 +172,7 @@ get_header('bairro');
         <div id="containerSatelite">
           <button id="botaoSatelite" onclick="toggleLayer()">Satélite</button>
         </div>
+        <a id="logoMaptiler" href="https://www.maptiler.com/"><img src="https://api.maptiler.com/resources/logo.svg" alt="MapTiler logo"></a>
       </div>
     </div>
   </div>

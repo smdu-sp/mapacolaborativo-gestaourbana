@@ -100,8 +100,10 @@ function toggleLayer() {
 
   if (camadaAtualRuas) {
     jQuery("#botaoSatelite").html("Satélite");
+    jQuery("#logoMaptiler").removeClass("hidden");
   } else {
     jQuery("#botaoSatelite").html("Ruas");
+    jQuery("#logoMaptiler").addClass("hidden");
   }
 }
 
