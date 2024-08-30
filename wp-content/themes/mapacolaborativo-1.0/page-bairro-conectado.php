@@ -24,7 +24,7 @@ get_header('bairro');
         </div>
         <div id="elementClickOpenPopUp" class="elementClickOpenPopUp popmake-134"></div>
         <div id="elementClickOpenPopUp1" class="elementClickOpenPopUp popmake-163"></div>
-        <div id="sidenav">
+        <div id="sidenav" class="sidenavBairroConectado">
           <div class="tituloLegenda BotoesMenu" id="botaoAjuda">
               <label>Instruções</label>
           </div>

@@ -34,6 +34,10 @@ html#html-bairro-conectado {
   margin-top: 0 !important;
 }
 
+#sidenav.sidenavBairroConectado {
+    top: 250px;
+}
+
 #containerDescritivo {
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 10px;
