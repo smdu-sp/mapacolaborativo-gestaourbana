@@ -60,9 +60,17 @@ get_header('bairro');
                   <img src="../wp-content/uploads/2024/08/14.png" alt="Ícone metro">
                   <label>Estação Sapopemba do Metrô</label>
                 </li>
-                <li id="escadarias">
-                  <img src="../wp-content/uploads/2024/08/icone-escadaria-1.png" alt="Ícone escadarias">
-                  <label>Escadarias</label>
+                <li id="escadariasA">
+                  <img src="../wp-content/uploads/2024/08/EscadariasA.png" alt="Ícone escadarias da rota A">
+                  <label>Escadarias da Rota A</label>
+                </li>
+                <li id="escadariasB">
+                  <img src="../wp-content/uploads/2024/08/EscadariasB.png" alt="Ícone escadarias da rota B">
+                  <label>Escadarias da Rota B</label>
+                </li>
+                <li id="escadariasC">
+                  <img src="../wp-content/uploads/2024/08/EscadariasC.png" alt="Ícone escadarias da rota C">
+                  <label>Escadarias da Rota C</label>
                 </li>
                 <li id="hospitais">
                   <img src="../wp-content/uploads/2024/08/11.png" alt="Ícone hospitais">
