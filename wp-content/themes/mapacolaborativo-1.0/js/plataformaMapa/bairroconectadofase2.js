@@ -471,5 +471,6 @@ function fecharPopupEscadarias() {
 function descartarEscolhas() {
   var objEscadaria = contribuicoesEscadarias.find(x => x["atual"]);
   objEscadaria["escolhas"] = new Set();
+  verificarEscolhas();
   iniciarFase();
 }
