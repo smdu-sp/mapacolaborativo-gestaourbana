@@ -42,18 +42,13 @@ function showLoading(val){
 }
 
 function objToFeature(infoFeature) {
-  console.log(infoFeature);
   var lat = parseFloat(infoFeature.latlon.latitude);
   var lon = parseFloat(infoFeature.latlon.longitude);
   var index = infoFeature.index;
-  console.log(lat, lon)
   var featureProposta = new ol.Feature({
       geometry: new ol.geom.Point(ol.proj.transform([lon, lat], 'EPSG:4326', 'EPSG:3857'))		
   });
 	featureProposta.set("DADOS_COLAB",infoFeature);
-
-  console.log(index)
-  console.log(propsLayerIndicados[index])
         
   propsLayerIndicados[index].getSource().addFeature(featureProposta);
 }
@@ -261,11 +256,6 @@ var displayFeatureInfo = function(pixel,evt) {
   var lat = lonlat[1];
   
   if (feature) {
-    // DEBUG
-    console.log("Feature: ");
-    console.log(feature.get("DADOS_COLAB"));
-    console.log(feature.get("DESCRICAO"));
-    console.warn(feature.get('CAMADA'));
     if(feature.get("DADOS_COLAB") == null){
       var rota = feature.get("ROTA");
       var popupHtml = '<p class="tituloPopup">'

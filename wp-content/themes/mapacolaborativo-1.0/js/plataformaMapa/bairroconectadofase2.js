@@ -12,8 +12,6 @@ for (let indexEscadaria = 1; indexEscadaria <= 9; indexEscadaria++) {
   contribuicoesEscadarias.push(obj);
 }
 
-console.log(contribuicoesEscadarias)
-
 var featuresPropostas,stylePointLayer;
 jQuery(".tituloPlataforma").html("Bairro Conectado: Terminal Sapopemba");
 
@@ -190,17 +188,11 @@ function openPopupForm(){
 var displayFeatureInfo = function(pixel,evt) {
   var feature = getFeatureAtPixelX(pixel,map);
   var coordinate = evt.coordinate;
-  console.log(coordinate);
   var lonlat = ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326');
   var lon = lonlat[0];
   var lat = lonlat[1];
   
   if (feature) {
-    // DEBUG
-    console.log("Feature: ");
-    console.log(feature.get("DADOS_COLAB"));
-    console.log(feature.get("DESCRICAO"));
-    console.warn(feature.get('CAMADA'));
     if(feature.get("Escadaria") == null){
       var rota = feature.get("ROTA");
       var popupHtml = '<p class="tituloPopup">'
@@ -433,8 +425,6 @@ async function enviarFormulario() {
   }
   fd = new FormData();
   fd.append("contribuicoes", JSON.stringify(contribuicoes));
-
-  console.log("contribuicoes", contribuicoes);
 
   try {
     const res = await fetch(
