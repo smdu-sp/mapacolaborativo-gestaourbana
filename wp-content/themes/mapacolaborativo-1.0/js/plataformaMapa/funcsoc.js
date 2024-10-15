@@ -1,3 +1,6 @@
+// Adiciona a projeção SIRGAS 2000 / UTM zone 23S
+proj4.defs("EPSG:31983", "+proj=utm +zone=23 +south +datum=SIRGAS2000 +units=m +no_defs");
+ol.proj.setProj4(proj4);
 /**
 * VARIÁVEIS PARA MANIPULAR AS FEATURES DE COLABORAÇÕES
 */
@@ -356,6 +359,8 @@ map.on('singleclick', function(evt) {
   var feature = getFeatureAtPixelX(pixelClick,map);
   if(feature){
     var lonlat = ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326');
+    var utm = ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:31983');
+    console.log(utm);
     var lon = lonlat[0];
     var lat = lonlat[1];
     var lograField = document.getElementsByName('logradouro');
